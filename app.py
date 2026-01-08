@@ -20,7 +20,7 @@ with col1:
     * **Escalabilidad:** Implementable en cualquier entorno que requiera seguridad sanitaria de alto nivel.
     """)
 with col2:
-    st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/AlphaFold_structure_of_a_protein.png/600px-AlphaFold_structure_of_a_protein.png", caption="Modelado Bioinformático Multi-Patógeno")
+    st.image("https://upload.wikimedia.org/wikipedia/commons/e/e7/AlphaFold_structure_of_hemoglobin.png", caption="Modelado Bioinformático Multi-Patógeno")
 
 st.divider()
 
@@ -58,3 +58,4 @@ st.success("BioPath-Sentinel AI: Protegiendo el futuro a través del código gen
 st.sidebar.title("Contacto Corporativo")
 st.sidebar.write("** Email:** ")
 st.sidebar.info("Solicitando vinculación al programa Google Cloud for Startups")
+
