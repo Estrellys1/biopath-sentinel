@@ -1,60 +1,60 @@
 import streamlit as st
 
 # Configuración de la página
-st.set_page_config(page_title="BioPath-Sentinel AI", page_icon="🧬", layout="wide")
-
-# --- ESTILO PERSONALIZADO ---
-st.markdown("""
-    <style>
-    .main { background-color: #f0f2f6; }
-    .title { color: #0E1117; font-family: 'Helvetica'; }
-    </style>
-    """, unsafe_allow_html=True)
+st.set_page_config(page_title="BioPath-Sentinel AI | Global Genomic Surveillance", page_icon="nn", layout="wide")
 
 # --- CABECERA ---
-st.title("🧬 BioPath-Sentinel AI")
-st.subheader("Vigilancia Genómica con IA para la Seguridad Sanitaria y del Agua")
+st.title(" BioPath-Sentinel AI")
+st.subheader("Inteligencia Artificial para la Seguridad Biológica Global")
 
-# --- INTRODUCCIÓN ---
-col1, col2 = st.columns(2)
+# --- PROPUESTA DE VALOR GENERAL ---
+col1, col2 = st.columns([2, 1])
 with col1:
     st.markdown("""
-    ### Nuestra Misión
-    Protegemos infraestructuras críticas mediante la detección temprana de patógenos. 
-    Utilizamos **AlphaFold2** y **Deep Learning** para reducir los tiempos de respuesta de 48 horas a solo **6 horas**.
+    ### Vigilancia Genómica en Tiempo Real
+    BioPath-Sentinel AI es una plataforma diseñada para la protección de **infraestructuras críticas y salud pública**. 
+    Mediante el uso de computación de alto rendimiento (GPU) y modelos de **Deep Learning**, transformamos el monitoreo biológico lento en una defensa digital instantánea.
+    
+    * **Universalidad:** Capacidad de procesar patógenos hídricos, transmitidos por vectores y respiratorios.
+    * **Velocidad:** Reducción del ciclo de detección de 48h a solo **6h**.
+    * **Escalabilidad:** Implementable en cualquier entorno que requiera seguridad sanitaria de alto nivel.
     """)
 with col2:
-    # Aquí puedes poner una imagen de una proteína
-    st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/AlphaFold_structure_of_a_protein.png/600px-AlphaFold_structure_of_a_protein.png", caption="Modelado Estructural de Proteínas Virales")
+    st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/AlphaFold_structure_of_a_protein.png/600px-AlphaFold_structure_of_a_protein.png", caption="Modelado Bioinformático Multi-Patógeno")
 
 st.divider()
 
-# --- PROYECTO SANTA MARTA Y AGUA ---
-st.header("🌊 Seguridad Hídrica: El Caso Santa Marta")
-col3, col4 = st.columns([2, 1])
-with col3:
-    st.write("""
-    Estamos enfocados en brindar soluciones de monitoreo biológico para plantas de tratamiento de agua potable. 
-    Nuestro proyecto piloto se centra en la **planta desalinizadora de Santa Marta**, asegurando que el agua esté libre de **Norovirus Humano** mediante análisis genómico acelerado por GPU.
-    """)
-with col4:
-    # Imagen de agua/mar
-    st.image("https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60", caption="Tecnología para Desalinización Segura")
+# --- SEGMENTOS DE IMPACTO (Aquí generalizamos) ---
+st.header(" Áreas de Aplicación")
+c1, c2, c3 = st.columns(3)
+
+with c1:
+    st.markdown("####  Seguridad Hídrica")
+    st.write("Sistemas de monitoreo para plantas de desalinización y tratamiento de agua potable, garantizando la detección inmediata de **Norovirus** y otros contaminantes biológicos.")
+
+with c2:
+    st.markdown("####  Vigilancia Epidemiológica")
+    st.write("Detección y seguimiento de variantes de **Dengue** y virus hemorrágicos para la prevención de brotes en regiones tropicales y subtropicales.")
+
+with c3:
+    st.markdown("####  Salud Pública Global")
+    st.write("Análisis de patógenos respiratorios como **Influenza**, permitiendo a los gobiernos tomar decisiones basadas en datos genómicos precisos.")
 
 st.divider()
 
-# --- MULTI-PATÓGENOS ---
-st.header("🦠 Plataforma Multi-Patógeno")
-st.write("Nuestra IA no se detiene en el agua. El motor BioPath-Sentinel es capaz de analizar:")
-kpi1, kpi2, kpi3 = st.columns(3)
-kpi1.metric("Norovirus", "Agua Potable")
-kpi2.metric("Dengue", "Salud Regional")
-kpi3.metric("Influenza", "Prevención Global")
+# --- TECNOLOGÍA (Lo que le interesa a Google) ---
+st.header(" Nuestro Stack Tecnológico")
+st.write("Apalancamos la potencia de la nube para democratizar la bioinformática avanzada:")
+st.code("""
+- Protein Folding: AlphaFold2
+- Deep Learning: TensorFlow / Keras (CNN & RNN)
+- Molecular Dynamics: GROMACS
+- Infrastructure: GPU Accelerated Computing
+""", language="text")
 
-st.info("Aspiramos a ser el estándar de seguridad biológica para empresas de servicios públicos y entidades gubernamentales.")
+st.success("BioPath-Sentinel AI: Protegiendo el futuro a través del código genético.")
 
 # --- CONTACTO ---
-st.sidebar.title("Contacto")
-st.sidebar.write("**📍 Sede:** Santa Marta, Colombia")
-st.sidebar.write("**📧 Email:** teducip@gmail.com")
-st.sidebar.write("[Visita mi LinkedIn](https://www.linkedin.com/feed/?trk=guest_homepage-basic_nav-header-signin)")
+st.sidebar.title("Contacto Corporativo")
+st.sidebar.write("** Email:** ")
+st.sidebar.info("Solicitando vinculación al programa Google Cloud for Startups")
