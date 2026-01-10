@@ -38,7 +38,9 @@ with c2:
 
 with c3:
     st.markdown("####  Salud Pública Global")
-    st.write("Análisis de patógenos respiratorios como **Influenza**, permitiendo a los gobiernos tomar decisiones basadas en datos genómicos precisos.")
+    # AGREGAMOS TU IMAGEN AQUÍ
+    st.image("influenz_2.png", caption="Modelado de Virus Influenza") 
+    st.write("Análisis de patógenos respiratorios como **Influenza**, permitiendo tomar decisiones basadas en datos genómicos precisos.")
 
 st.divider()
 
@@ -76,6 +78,7 @@ def leer_archivo_cancer():
 with st.sidebar.expander("Ver Proyecto: Cáncer de Mama"):
     contenido = leer_archivo_cancer()
     st.write(contenido)
+
 
 
 
