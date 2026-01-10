@@ -20,7 +20,7 @@ with col1:
     * **Escalabilidad:** Implementable en cualquier entorno que requiera seguridad sanitaria de alto nivel.
     """)
 with col2:
-    st.image("https://upload.wikimedia.org/wikipedia/commons/e/e7/AlphaFold_structure_of_hemoglobin.png", caption="Modelado Bioinformático Multi-Patógeno")
+    st.image("virus1.png", caption="Modelado Bioinformático Multi-Patógeno")
 
 st.divider()
 
@@ -78,6 +78,7 @@ def leer_archivo_cancer():
 with st.sidebar.expander("Ver Proyecto: Cáncer de Mama"):
     contenido = leer_archivo_cancer()
     st.write(contenido)
+
 
 
 
