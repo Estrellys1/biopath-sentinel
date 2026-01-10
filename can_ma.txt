@@ -1,0 +1,259 @@
+INFORME INTEGRADO DE LOS NOTEBOOKS
+
+Análisi clínico, genómico, multi-ómico y de supervivencia en cáncer de mama (TCGA-BRCA) Justificación técnica para asignación de GPU.
+
+1. Introducción general
+
+El cancer de mama es una de las principales causas de mortalidad en mujeres a nivel mundial.  El avance de proyectos como TCGA-BRCA ha permitido el acceso a grandes volúmenes de datos clínicos, transcriptómicos, proteómicos y mutacionales, creando la oportunidad de desarrollar pipelines bioinformáticos integrativos orientados a la identificación de biomarcadores y dianas terapéuticas.
+
+el presente trabajo desarrolla una fase 1 computacional (GPU) enfocada en la integración, análisis estadístico y priorización de genes y proteínas relevantes.
+
+Los resultados obtenidos constituyen la bse para una fase 2 dependiente de GPUm orientada a modelado estructural dinámica molecular y simulaciones de alta complejidad.
+
+2. Notebook 1
+Análisis_cancer_biomarcadores.ipynb
+
+Objetivo
+Integrar datos clínicos, RNAseq, RPPA y supervivencia para identificar biomarcadores asociados a pronóstico en cáncer de mama.
+
+Que hace el notebook
+
+Limpia y homogeniza IDs de pacientes
+
+Integra cuatro caps de datos (Clinico, expresión génica, proteómica y supervivencia)
+
+Realiza análisis diferencial entre pacientes vivos y fallecidos.
+
+Entrena modelos predictivos (Random Forest)
+
+Evalúa modelos predictivos (Random Forest)
+
+Evalúa desempeño con métricas estándar (accuracy, AUC, recall).
+
+Prioriza genes y proteínas relevantes
+
+Resultados principales
+
+884 pacientes comunes entre todos los datasets
+
+Benes diferenciales clave
+
+TFF1, ADH1B, CGA, SCGB2A2, CST1
+
+Proteínas diferenciales:
+
+ATM, Chk1, FASN, ARID1A, C-Raf
+
+Random Forest:
+
+Accuracy > 80%
+
+Recall fallecidos bajo -- fuerte desbalance de clases
+
+ATM aparece tanto en RNAseq como en RPPA
+
+Análisis crítico
+
+- Integración multi-ósmica correcta
+-Resultados biológicamente coherentes
+Limitación: desbalance severo (vivos vs fallecidos)
+Se requieren modelos más robustos (SMOTE, deep learning)
+
+conclusión del notebook
+
+Este notebook demuestra capacidad avanzada de integración multi-ósmica y posiciona a ATM como biomarcador robustom justificando análisis estructural posterior
+
+3 notebook 2
+fastapi_cancer_app_dex-ok.ipynb
+
+objetivo
+
+Analizar proteómica RPPA, mutacines somáticas y supervivencia y construir un pipeline reutilizable.
+
+Que hace el notebook
+ 
+Procesa RPPA (937 * 281 proteinas)
+Analiza mutaciones somáticas (archivo MC3 
+Identifica genes más multados y tipos de mutación
+Filtra mutaciones dañinas (SIFT/PolyPhe)
+Aplica Kaplan-Meier y modelos de Cox
+Genera visualizaciones  y tablas exportables
+Resultados clave
+
+Genes más mutados:
+PIK3CA, TP53, TTM, CDH1, GATA3
+
+Mutacionaes más frecuentes:
+Missencse mutations
+
+Proteínas más variables:
+HER2M EGFR, Akt, PI3K, mTOR
+
+Cox multivariante:
+Concordance = 0.71
+
+No significancia etadística por bajo número de eventos (19)
+
+Análisis crítico
+
+Pipeline reproducible y correcto
+Resultados alineados con literatura TCGA
+Baja potencia estadística
+Necesidad de cohortes más grandes o modelos penalizados
+
+Conclusión del notebook
+Este notebook valida la coherencia de los datos TCGA-BRCA y establece un marco robusto de análisis protómico y mutacional listo para ampliarse con GPU.
+
+Notebook 3
+
+Cancer_ma_analisis.ipynb
+
+Objetivo
+
+Analizar mutaciones somáticas, hotspots y su asociación clínica
+
+Qué hace
+
+Procesa mutaciones somáticas
+Identifica genes y hotspots mutacionales
+Integra con datos clínicos y supervivencia
+Analiza impacto funcional(SIFT/Poly/Phen)
+Anota variantes con ClinVar
+
+Resultados
+
+Genes clave:
+
+PIK3CA, TP53, AKT1, ERBB2, PTEN
+ 
+Hostpots:
+
+AKT1 pE17K
+
+Problema detectado:
+
+Formato textual de SIFT/PolyPhen impidió filtrado inicial
+
+Análisis crítico
+
+Identrificación correcta de hotspots
+Concordancia con literatura clínica
+Error técnico detecctado y documentado
+Corrección propueta (regex)
+
+
+Conclusión
+
+El notebook demuestra capacidad crítica, al identificar errores  yproponer soluciones reproducibles.
+
+5. Notebook 4
+genomic_analysis.ipynb
+
+Objetivo
+
+Construir un pipeline genómico + ML orientado a priorización de genes
+
+Qué hace
+
+Integra mutaciones y supervivencia
+Construye matriz paciente x gen
+Entrena Random Forest y LighGBM
+Evalúa estabilidad del modelo
+Prioriza genes relevantes
+
+Resultados
+
+3798 mutaciones dañinas
+
+Genes más afectados:
+PIK3CA (109), PTEN (6). TP53
+
+Modelos estables
+
+Feature biológicamente coherentes
+
+Analisis
+Pipeline solido
+Preparación directa para simulaciones estructucturales
+Justificación clara de GPU
+
+
+6. Notebook 5
+Copia de imag_biol.ipynb
+
+Objetivo
+
+Clasificación de imágenes histopatológicas mediante Deep Learning (CNN).
+
+Qué hace
+Descarga dataset Kaggle
+Reprocesamiento y data augmentation
+Entrenamiento CNN
+Guardado del modelo en Drive
+
+Análisis
+Uso correcto de DL
+Dataset grande
+Demuestra experiencia práctica en GPU-ready workloads
+
+CONCLUSIÓN GLOBAL DEL PROYECTO
+
+Este conjunto de notebooks demuestra
+
+Dominio de integración clínica, genómica, transcriptómica y proteómica
+Uso correcto de estadística, ML y visualización
+Capacidad de detectar errores y corregir pipelines
+Coherencia biológica conTCGA y literatura internacional 
+Preparación explícita para análisis estructural avanzado.
+
+Los genes PIK3CA, TP53 y PTEN emergen consistentemente como candidatos prioritarios, justificando su estudio estrutural y dinámico.
+
+JUSTIFICACION FINAL PARA GPU
+
+La fase siguiente requiere:
+
+AlphaFold/RosettaFold
+
+Dinámica molecular (GROMACS)
+
+Docking proteíana-ligando
+
+Anáisis conformacional de mutantes
+
+Estas tarea so inviables en CPU y requieren CPU > = 16 GB VRAM
+
+Conclusión institucional
+
+El proyecto presenta un pipeline bioinformático completo, reproducible y científicamente sólido.
+
+Los resultados obtenidos justifican plenamente la asignación de recursos GPU para completar la fase de modelado estructural y simulación molecular, orientada a publicación científica y desarrollo de conocimiento aplicado en cáncer de mama.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
