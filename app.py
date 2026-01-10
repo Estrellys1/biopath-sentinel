@@ -58,4 +58,6 @@ st.success("BioPath-Sentinel AI: Protegiendo el futuro a través del código gen
 st.sidebar.title("Contacto Corporativo")
 st.sidebar.write("** Email:** ")
 st.sidebar.info("Solicitando vinculación al programa Google Cloud for Startups")
+st.sidebar.title("Cáncer_mama")
+
 
