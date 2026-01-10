@@ -62,7 +62,7 @@ st.sidebar.info("Solicitando vinculación al programa Google Cloud for Startups"
 st.sidebar.divider()
 
 # --- NUEVA SECCIÓN: CÁNCER DE MAMA ---
-st.sidebar.title("🧬 Investigación Genómica")
+st.sidebar.title("Investigación Genómica")
 
 # Esta función lee el archivo que subiste a GitHub
 def leer_archivo_cancer():
@@ -76,6 +76,7 @@ def leer_archivo_cancer():
 with st.sidebar.expander("Ver Proyecto: Cáncer de Mama"):
     contenido = leer_archivo_cancer()
     st.write(contenido)
+
 
 
 
