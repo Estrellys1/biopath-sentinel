@@ -21,9 +21,10 @@ with col1:
     """)
 with col2:
     with col2:
-    # Usar la URL RAW de GitHub asegura que la imagen siempre cargue
+    with col2:
+    # Este enlace apunta directamente al archivo en tu GitHub y no fallará
     st.image("https://raw.githubusercontent.com/Estrellys1/biopath-sentinel/main/virus1.png", 
-             caption="Modelado Bioinformático Multi-Patógeno")
+             caption="Modelado Bioinformático de Patógenos (Dengue/Influenza)")
 
 st.divider()
 
@@ -81,6 +82,7 @@ def leer_archivo_cancer():
 with st.sidebar.expander("Ver Proyecto: Cáncer de Mama"):
     contenido = leer_archivo_cancer()
     st.write(contenido)
+
 
 
 
