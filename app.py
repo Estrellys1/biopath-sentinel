@@ -56,8 +56,26 @@ st.success("BioPath-Sentinel AI: Protegiendo el futuro a través del código gen
 
 # --- CONTACTO ---
 st.sidebar.title("Contacto Corporativo")
-st.sidebar.write("** Email:** ")
+st.sidebar.write("**📧 Email:** Tu-correo-aqui@unilibre.edu.co")
 st.sidebar.info("Solicitando vinculación al programa Google Cloud for Startups")
-st.sidebar.title("Cáncer_mama")
+
+st.sidebar.divider()
+
+# --- NUEVA SECCIÓN: CÁNCER DE MAMA ---
+st.sidebar.title("🧬 Investigación Genómica")
+
+# Esta función lee el archivo que subiste a GitHub
+def leer_archivo_cancer():
+    try:
+        with open("can_ma.txt", "r", encoding="utf-8") as f:
+            return f.read()
+    except FileNotFoundError:
+        return "El archivo de investigación can_ma.txt no se encontró en el repositorio."
+
+# Crear el botón desplegable en la barra lateral
+with st.sidebar.expander("Ver Proyecto: Cáncer de Mama"):
+    contenido = leer_archivo_cancer()
+    st.write(contenido)
+
 
 
