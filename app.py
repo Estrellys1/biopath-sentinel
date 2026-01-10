@@ -58,7 +58,7 @@ st.success("BioPath-Sentinel AI: Protegiendo el futuro a través del código gen
 
 # --- CONTACTO ---
 st.sidebar.title("Contacto Corporativo")
-st.sidebar.write("**📧 Email:** Tu-correo-aqui@unilibre.edu.co")
+st.sidebar.write("**📧 Email:** ")
 st.sidebar.info("Solicitando vinculación al programa Google Cloud for Startups")
 
 st.sidebar.divider()
@@ -78,6 +78,7 @@ def leer_archivo_cancer():
 with st.sidebar.expander("Ver Proyecto: Cáncer de Mama"):
     contenido = leer_archivo_cancer()
     st.write(contenido)
+
 
 
 
