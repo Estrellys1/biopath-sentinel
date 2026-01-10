@@ -20,7 +20,10 @@ with col1:
     * **Escalabilidad:** Implementable en cualquier entorno que requiera seguridad sanitaria de alto nivel.
     """)
 with col2:
-    st.image("virus1.png", caption="Modelado Bioinformático Multi-Patógeno")
+    with col2:
+    # Usar la URL RAW de GitHub asegura que la imagen siempre cargue
+    st.image("https://raw.githubusercontent.com/Estrellys1/biopath-sentinel/main/virus1.png", 
+             caption="Modelado Bioinformático Multi-Patógeno")
 
 st.divider()
 
@@ -78,6 +81,7 @@ def leer_archivo_cancer():
 with st.sidebar.expander("Ver Proyecto: Cáncer de Mama"):
     contenido = leer_archivo_cancer()
     st.write(contenido)
+
 
 
 
