@@ -1,11 +1,56 @@
 import streamlit as st
 
 # Configuración de la página
-st.set_page_config(page_title="BioPath-Sentinel AI | Global Genomic Surveillance", page_icon="nn", layout="wide")
+st.set_page_config(page_title="BioPath-Sentinel AI", page_icon="", layout="wide")
 
-# --- CABECERA ---
-st.title(" BioPath-Sentinel AI")
-st.subheader("Inteligencia Artificial para la Seguridad Biológica Global")
+# --- BARRA LATERAL (NAVEGACIÓN) ---
+st.sidebar.title(" Panel de Investigación")
+opcion = st.sidebar.radio(
+    "Seleccione una línea de estudio:",
+    ["Inicio", "Oncología Genómica", "Dengue & Influenza", "Seguridad Hídrica (Norovirus)", "Simulación Molecular"]
+)
+
+# --- PÁGINA: INICIO ---
+if opcion == "Inicio":
+    st.title(" BioPath-Sentinel AI")
+    st.subheader("Inteligencia Artificial para la Seguridad Biológica Global")
+    st.markdown("""
+    Plataforma diseñada para la protección de **infraestructuras críticas**. 
+    Utilizamos **modelado** avanzado y **bioinformática** para reducir ciclos de detección de 48h a 6h.
+    """)
+    st.info("Seleccione una investigación en el menú de la izquierda para ver los detalles técnicos.")
+
+# --- PÁGINA: ONCOLOGÍA GENÓMICA ---
+elif opcion == "Oncología Genómica":
+    st.title(" Investigación: Cáncer de Mama")
+    st.write("Análisis de biomarcadores y medicina de precisión.")
+    # Aquí puedes pegar tu texto de can_ma.txt o escribir directamente
+    try:
+        with open("can_ma.txt", "r", encoding="utf-8") as f:
+            st.markdown(f.read())
+    except:
+        st.write("Cargando datos de investigación genómica...")
+
+# --- PÁGINA: DENGUE & INFLUENZA ---
+elif opcion == "Dengue & Influenza":
+    st.title(" Vigilancia Epidemiológica")
+    st.write("Modelado estructural de patógenos virales.")
+    st.markdown("""
+    Análisis realizado mediante **AlphaFold2** para predecir la interacción de proteínas en variantes de Dengue e Influenza.
+    """)
+
+# --- PÁGINA: SEGURIDAD HÍDRICA ---
+elif opcion == "Seguridad Hídrica (Norovirus)":
+    st.title(" Monitoreo de Norovirus")
+    st.write("Protección de plantas de desalinización y agua potable mediante vigilancia genómica constante.")
+
+# --- PÁGINA: SIMULACIÓN MOLECULAR ---
+elif opcion == "Simulación Molecular":
+    st.title(" Dinámica Molecular y Bioinformática")
+    st.markdown("""
+    Esta sección requiere el uso de **GPU (CUDA)** para ejecutar simulaciones en **GROMACS**. 
+    Actualmente solicitando recursos institucionales para escalar el procesamiento de datos complejos.
+    """)
 
 # --- PROPUESTA DE VALOR GENERAL (SIN IMÁGENES) ---
 st.markdown("""
@@ -76,6 +121,7 @@ def leer_archivo_cancer():
 with st.sidebar.expander("Ver Proyecto: Cáncer de Mama"):
     contenido = leer_archivo_cancer()
     st.write(contenido)
+
 
 
 
