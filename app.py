@@ -23,7 +23,7 @@ with col2:
     with col2:
     with col2:
     # Este enlace apunta directamente al archivo en tu GitHub y no fallará
-    st.image("https://raw.githubusercontent.com/Estrellys1/biopath-sentinel/main/virus1.png", 
+    st.image("https://raw.githubusercontent.com/Estrellys1/biopath-sentinel/main/.png", 
              caption="Modelado Bioinformático de Patógenos (Dengue/Influenza)")
 
 st.divider()
@@ -82,6 +82,7 @@ def leer_archivo_cancer():
 with st.sidebar.expander("Ver Proyecto: Cáncer de Mama"):
     contenido = leer_archivo_cancer()
     st.write(contenido)
+
 
 
 
