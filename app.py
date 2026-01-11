@@ -58,9 +58,10 @@ st.markdown("""
 BioPath-Sentinel AI integra **simulación molecular** y **modelado predictivo** para la protección de infraestructuras críticas y salud pública. 
 Mediante el uso de computación acelerada por GPU, transformamos el análisis bioinformático tradicional en una respuesta digital inmediata.
 
-* **Simulación Molecular:** Predicción de estructuras proteicas con AlphaFold2 para entender la interacción de patógenos.
-* **Modelado Avanzado:** Uso de Deep Learning para la detección temprana de variantes virales y biomarcadores de cáncer.
-* **Bioinformática Escalable:** Reducción del ciclo de procesamiento genómico de 48h a solo **6h**.
+* **Modelado Estructural:** Predicción de estructuras 3D de alta fidelidad mediante **AlphaFold2**, permitiendo visualizar la arquitectura de proteínas virales y biomarcadores oncológicos.
+* **Simulación Molecular:** Análisis de dinámica molecular (MD) con **GROMACS** para estudiar la interacción física entre patógenos y receptores celulares, optimizado para **GPU (CUDA)**.
+* **IA y Aprendizaje Automático:** Implementación de redes neuronales convolucionales (CNN) y recurrentes (RNN) para el reconocimiento de patrones genómicos, clasificación de variantes y predicción de resistencia a fármacos.
+* **Bioinformática Escalable:** Optimización de pipelines de datos masivos para reducir el ciclo de procesamiento genómico de 48h a solo **6h**.
 """)
 
 st.info("Ecosistema diseñado para la soberanía tecnológica en investigación genómica.")
@@ -121,6 +122,7 @@ def leer_archivo_cancer():
 with st.sidebar.expander("Ver Proyecto: Cáncer de Mama"):
     contenido = leer_archivo_cancer()
     st.write(contenido)
+
 
 
 
