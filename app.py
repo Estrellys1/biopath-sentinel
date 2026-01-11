@@ -54,16 +54,16 @@ elif opcion == "Simulación Molecular":
 
 # --- PROPUESTA DE VALOR GENERAL (SIN IMÁGENES) ---
 st.markdown("""
-###  Vigilancia Genómica en Tiempo Real
-BioPath-Sentinel AI es una plataforma diseñada para la protección de **infraestructuras críticas y salud pública**. 
-Mediante el uso de computación de alto rendimiento (GPU) y modelos de **Deep Learning**, transformamos el monitoreo biológico lento en una defensa digital instantánea.
+###  Bioinformática y Vigilancia Genómica de Alto Rendimiento
+BioPath-Sentinel AI integra **simulación molecular** y **modelado predictivo** para la protección de infraestructuras críticas y salud pública. 
+Mediante el uso de computación acelerada por GPU, transformamos el análisis bioinformático tradicional en una respuesta digital inmediata.
 
-* **Universalidad:** Capacidad de procesar patógenos hídricos, transmitidos por vectores y respiratorios.
-* **Velocidad:** Reducción del ciclo de detección de 48h a solo **6h**.
-* **Escalabilidad:** Implementable en cualquier entorno que requiera seguridad sanitaria de alto nivel.
+* **Simulación Molecular:** Predicción de estructuras proteicas con AlphaFold2 para entender la interacción de patógenos.
+* **Modelado Avanzado:** Uso de Deep Learning para la detección temprana de variantes virales y biomarcadores de cáncer.
+* **Bioinformática Escalable:** Reducción del ciclo de procesamiento genómico de 48h a solo **6h**.
 """)
 
-st.info("Plataforma optimizada para el procesamiento de secuencias genómicas complejas mediante IA.")
+st.info("Ecosistema diseñado para la soberanía tecnológica en investigación genómica.")
 
 st.divider()
 
@@ -121,6 +121,7 @@ def leer_archivo_cancer():
 with st.sidebar.expander("Ver Proyecto: Cáncer de Mama"):
     contenido = leer_archivo_cancer()
     st.write(contenido)
+
 
 
 
