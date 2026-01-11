@@ -19,11 +19,10 @@ with col1:
     * **Velocidad:** Reducción del ciclo de detección de 48h a solo **6h**.
     * **Escalabilidad:** Implementable en cualquier entorno que requiera seguridad sanitaria de alto nivel.
     """)
+
 with col2:
-    with col2:
-    with col2:
-    # Este enlace apunta directamente al archivo en tu GitHub y no fallará
-    st.image("https://raw.githubusercontent.com/Estrellys1/biopath-sentinel/main/.png", 
+    # Asegúrate de que el archivo se llame virus1.jpg en tu GitHub
+    st.image("https://raw.githubusercontent.com/Estrellys1/biopath-sentinel/main/virus1.jpg", 
              caption="Modelado Bioinformático de Patógenos (Dengue/Influenza)")
 
 st.divider()
@@ -82,6 +81,7 @@ def leer_archivo_cancer():
 with st.sidebar.expander("Ver Proyecto: Cáncer de Mama"):
     contenido = leer_archivo_cancer()
     st.write(contenido)
+
 
 
 
