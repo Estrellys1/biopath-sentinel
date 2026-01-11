@@ -7,23 +7,18 @@ st.set_page_config(page_title="BioPath-Sentinel AI | Global Genomic Surveillance
 st.title(" BioPath-Sentinel AI")
 st.subheader("Inteligencia Artificial para la Seguridad Biológica Global")
 
-# --- PROPUESTA DE VALOR GENERAL ---
-col1, col2 = st.columns([2, 1])
-with col1:
-    st.markdown("""
-    ### Vigilancia Genómica en Tiempo Real
-    BioPath-Sentinel AI es una plataforma diseñada para la protección de **infraestructuras críticas y salud pública**. 
-    Mediante el uso de computación de alto rendimiento (GPU) y modelos de **Deep Learning**, transformamos el monitoreo biológico lento en una defensa digital instantánea.
-    
-    * **Universalidad:** Capacidad de procesar patógenos hídricos, transmitidos por vectores y respiratorios.
-    * **Velocidad:** Reducción del ciclo de detección de 48h a solo **6h**.
-    * **Escalabilidad:** Implementable en cualquier entorno que requiera seguridad sanitaria de alto nivel.
-    """)
+# --- PROPUESTA DE VALOR GENERAL (SIN IMÁGENES) ---
+st.markdown("""
+###  Vigilancia Genómica en Tiempo Real
+BioPath-Sentinel AI es una plataforma diseñada para la protección de **infraestructuras críticas y salud pública**. 
+Mediante el uso de computación de alto rendimiento (GPU) y modelos de **Deep Learning**, transformamos el monitoreo biológico lento en una defensa digital instantánea.
 
-with col2:
-    # Asegúrate de que el archivo se llame virus1.jpg en tu GitHub
-    st.image("https://raw.githubusercontent.com/Estrellys1/biopath-sentinel/main/virus1.jpg", 
-             caption="Modelado Bioinformático de Patógenos (Dengue/Influenza)")
+* **Universalidad:** Capacidad de procesar patógenos hídricos, transmitidos por vectores y respiratorios.
+* **Velocidad:** Reducción del ciclo de detección de 48h a solo **6h**.
+* **Escalabilidad:** Implementable en cualquier entorno que requiera seguridad sanitaria de alto nivel.
+""")
+
+st.info("Plataforma optimizada para el procesamiento de secuencias genómicas complejas mediante IA.")
 
 st.divider()
 
@@ -81,6 +76,7 @@ def leer_archivo_cancer():
 with st.sidebar.expander("Ver Proyecto: Cáncer de Mama"):
     contenido = leer_archivo_cancer()
     st.write(contenido)
+
 
 
 
