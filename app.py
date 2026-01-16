@@ -61,12 +61,6 @@ elif opcion == "Seguridad Hídrica (Norovirus)":
         st.write("2. **Validación:** Análisis de Ramachandran (96.47% favorecido).")
         st.progress(60)
         
-        st.write("""
-        **Análisis de Residuos:**
-        Cada punto blanco representa un residuo aminoacídico. La alta densidad en las zonas verdes 
-        confirma que la estructura secundaria (Hélices y Láminas) es termodinámicamente estable 
-        y apta para simulaciones de alta resolución en Google Cloud.
-        """)
         
         # INSERTAMOS LA IMAGEN AQUÍ
         try:
@@ -83,7 +77,13 @@ elif opcion == "Seguridad Hídrica (Norovirus)":
         - **Regiones Favorecidas:** 96.47% de los residuos.
         - **Calidad:** Estructura validada para simulación de Dinámica Molecular.
         """)
-
+        st.write("""
+        **Análisis de Residuos:**
+        Cada punto blanco representa un residuo aminoacídico. La alta densidad en las zonas verdes 
+        confirma que la estructura secundaria (Hélices y Láminas) es termodinámicamente estable 
+        y apta para simulaciones de alta resolución en Google Cloud.
+        """)
+                     
 # --- PÁGINA: SIMULACIÓN MOLECULAR ---
 elif opcion == "Simulación Molecular":
     st.title(" Dinámica Molecular y Bioinformática")
@@ -172,5 +172,6 @@ st.sidebar.info("Google Cloud for Startups Program")
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
