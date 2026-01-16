@@ -79,48 +79,35 @@ elif opcion == "Seguridad Hídrica (Norovirus)":
     
     st.markdown("""
     "Estamos analizando la estabilidad estructural de la proteína de la cápside del Norovirus Humano. 
-    Tras la predicción con **AlphaFold2**, realizamos **validación estereoquímica** mediante mapas de **Ramachandran** y análisis de **Clashscore** para asegurar la calidad del modelo."
+    Tras la predicción con **AlphaFold2**, realizamos **validación estereoquímica** mediante mapas de **Ramachandran**."
     """)
 
     col1, col2 = st.columns(2)
     with col1:
-        st.write("""
-        1. **Modelado:** Estructura obtenida mediante AlphaFold2.
-        2. **Validación:** Análisis de Ramachandran completado (96.47% en regiones favorecidas).
-        3. **Próximo Paso:** Simulación de Dinámica Molecular (MD) para evaluar estabilidad.
-        """)
-        st.progress(60) 
+        st.write("1. **Modelado:** AlphaFold2.")
+        st.write("2. **Validación:** Ramachandran (96.47% favorecido).")
+        st.progress(60)
     
     with col2:
-        st.info("""
-        **Hito Técnico:** El siguiente hito requiere instancias **NVIDIA A100** para ejecutar Dinámica Molecular (MD) 
-        en GROMACS, permitiendo observar la interacción ligando-receptor a escala atómica.
-        """)
+        st.info("Hito Técnico: Requiere instancias **NVIDIA A100** para Dinámica Molecular en GROMACS.")
 
     st.divider()
 
-    # --- SECCIÓN DEL GRÁFICO DE RAMACHANDRAN ---
+    # --- SECCIÓN DEL GRÁFICO (SOLO UNA VEZ) ---
     st.subheader("📍 Validación Estereoquímica: Ramachandran Plot")
-    
-    # Esta es la parte crítica: col_img y col_txt deben estar alineados bajo este elif
-    col_img, col_txt = st.columns([1.5, 1])
+    c_img, c_txt = st.columns([1.5, 1])
 
-    with col_img:
-        try:
-            # Intenta cargar la imagen desde la raíz de tu GitHub
-            st.image("ramachandran_plot.png", 
-                     caption="Análisis de ángulos diédricos (Phi/Psi) - MolProbity", 
-                     use_container_width=True)
-        except Exception as e:
-            st.warning("⚠️ No se pudo cargar 'ramachandran_plot.png'. Revisa que el nombre en GitHub sea exacto.")
-            st.error(f"Error técnico: {e}")
+    with c_img:
+        # Asegúrate de que el archivo se llame EXACTAMENTE ramachandran_plot.png en GitHub
+        st.image("ramachandran_plot.png", 
+                 caption="Mapa de Ramachandran - Validación MolProbity", 
+                 use_container_width=True)
 
-    with col_txt:
+    with c_txt:
         st.write("""
         **Interpretación Técnica:**
-        - **Regiones Favorecidas:** 96.47% de los residuos se encuentran en las zonas de menor energía estadística.
-        - **Outliers:** Mínimos (propios de la flexibilidad del dominio P2).
-        - **Calidad:** La estructura cumple con los estándares de publicación para simulaciones de Dinámica Molecular.
+        - **Regiones Favorecidas:** 96.47%
+        - **Calidad:** Estructura validada para simulación MD.
         """)
         
 # --- PÁGINA: SIMULACIÓN MOLECULAR ---
@@ -222,6 +209,7 @@ def leer_archivo_cancer():
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
