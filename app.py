@@ -139,6 +139,30 @@ st.code("""
 - Infrastructure: Google Cloud (GKE & NVIDIA A100)
 """, language="text")
 
+st.divider()
+st.subheader("🚀 Optimización del Ciclo de Respuesta")
+
+col_metrics1, col_metrics2 = st.columns(2)
+
+with col_metrics1:
+    st.write("**Reducción de Tiempo de Análisis**")
+    # Gráfico de barras simple para comparar métodos
+    chart_data_time = {
+        "Método": ["RT-qPCR Tradicional", "BioPath-Sentinel AI"],
+        "Horas": [48, 6]
+    }
+    st.bar_chart(chart_data_time, x="Método", y="Horas", color="#ff4b4b")
+    st.caption("Ahorro de tiempo: 87.5%")
+
+with col_metrics2:
+    st.write("**Reducción de Costos Operativos**")
+    chart_data_cost = {
+        "Método": ["Métodos Experimentales", "BioPath-Sentinel AI"],
+        "Costo (USD)": [100000, 40000]
+    }
+    st.bar_chart(chart_data_cost, x="Método", y="Costo (USD)", color="#29b5e8")
+    st.caption("Ahorro de costos: >60%")
+
 # --- CONTACTO Y SIDEBAR EXTRA ---
 st.sidebar.divider()
 st.sidebar.title(" Contacto Corporativo")
@@ -154,6 +178,7 @@ def leer_archivo_cancer():
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
