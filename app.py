@@ -1,7 +1,7 @@
 import streamlit as st
 
 # --- CONFIGURACIÓN DE LA PÁGINA ---
-st.set_page_config(page_title="BioPath-Sentinel AI", page_icon="🧬", layout="wide")
+st.set_page_config(page_title="BioPath-Sentinel AI", page_icon="", layout="wide")
 
 # --- FUNCIONES DE SOPORTE ---
 def leer_archivo_cancer():
@@ -12,7 +12,7 @@ def leer_archivo_cancer():
         return "Contenido genómico en proceso de carga..."
 
 # --- BARRA LATERAL (NAVEGACIÓN) ---
-st.sidebar.title("🧬 Panel de Investigación")
+st.sidebar.title(" Panel de Investigación")
 opcion = st.sidebar.radio(
     "Seleccione una línea de estudio:",
     ["Inicio", "Oncología Genómica", "Dengue & Influenza", "Seguridad Hídrica (Norovirus)", "Simulación Molecular"]
@@ -20,7 +20,7 @@ opcion = st.sidebar.radio(
 
 # --- PÁGINA: INICIO ---
 if opcion == "Inicio":
-    st.title("🛡️ BioPath-Sentinel AI")
+    st.title(" BioPath-Sentinel AI")
     st.subheader("Inteligencia Artificial para la Seguridad Biológica Global")
     
     st.markdown("""
@@ -36,7 +36,7 @@ if opcion == "Inicio":
 
 # --- PÁGINA: ONCOLOGÍA GENÓMICA ---
 elif opcion == "Oncología Genómica":
-    st.title("🎗️ Investigación: Cáncer de Mama")
+    st.title(" Investigación: Cáncer de Mama")
     st.subheader("Medicina de Precisión y Patrones Genómicos")
     st.markdown(leer_archivo_cancer())
 
@@ -47,7 +47,7 @@ elif opcion == "Dengue & Influenza":
 
 # --- PÁGINA: SEGURIDAD HÍDRICA (NOROVIRUS) ---
 elif opcion == "Seguridad Hídrica (Norovirus)":
-    st.title("💧 Vigilancia de Norovirus")
+    st.title(" Vigilancia de Norovirus")
     st.subheader("Estado del Proyecto: Validación Estructural y Estabilidad")
     
     st.markdown("""
@@ -67,7 +67,7 @@ elif opcion == "Seguridad Hídrica (Norovirus)":
                      caption="Mapa de Ramachandran - Validación Estructural", 
                      use_container_width=True)
         except:
-            st.warning("⚠️ Archivo 'ramachandran_plot.png' no encontrado en el repositorio.")
+            st.warning(" Archivo 'ramachandran_plot.png' no encontrado en el repositorio.")
     
     with col2:
         st.info("**Hito Técnico:** El siguiente hito requiere instancias **NVIDIA A100** para ejecutar Dinámica Molecular (MD).")
@@ -79,7 +79,7 @@ elif opcion == "Seguridad Hídrica (Norovirus)":
 
 # --- PÁGINA: SIMULACIÓN MOLECULAR ---
 elif opcion == "Simulación Molecular":
-    st.title("🧬 Dinámica Molecular y Bioinformática")
+    st.title(" Dinámica Molecular y Bioinformática")
     
     st.markdown("""
     "Nuestra metodología emplea **CHARMM-GUI** para la construcción de sistemas solvatados complejos. 
@@ -90,12 +90,12 @@ elif opcion == "Simulación Molecular":
 
     c1, c2 = st.columns(2)
     with c1:
-        st.subheader("🧪 Diana Terapéutica (Salud)")
+        st.subheader(" Diana Terapéutica (Salud)")
         st.write("Fuerza iónica: **0.15 M NaCl** (Fisiológico).")
         st.caption("Temp: 310.15 K | Force Field: CHARMM36m")
         
     with c2:
-        st.subheader("🌊 Desalinización (Industrial)")
+        st.subheader(" Desalinización (Industrial)")
         st.write("Alta salinidad: **0.60 M NaCl** (Agua de mar).")
         st.caption("Temp: 298.15 K | Salinidad: 35 ppt")
 
@@ -104,14 +104,14 @@ elif opcion == "Simulación Molecular":
 # --- SECCIÓN INFERIOR GENERAL (VISIBLE EN TODAS LAS PÁGINAS) ---
 st.divider()
 st.markdown("""
-### 🚀 Valor Tecnológico de BioPath-Sentinel AI
+###  Valor Tecnológico de BioPath-Sentinel AI
 Nuestra Infraestructura Computacional permite procesar sistemas de alta complejidad. Mientras en el sector salud esto nos permite 
 estabilizar proteínas virales, en el sector industrial nos permite predecir el desgaste de membranas de ósmosis inversa, 
 **reduciendo costos operativos en plantas desalinizadoras hasta en un 15%**.
 """)
 
 # --- SEGMENTOS DE IMPACTO ---
-st.header("🌐 Áreas de Aplicación")
+st.header(" Áreas de Aplicación")
 ca, cb, cc = st.columns(3)
 
 with ca:
@@ -132,7 +132,7 @@ with cc:
 
 # --- STACK TECNOLÓGICO ---
 st.divider()
-st.header("🛠️ Stack Tecnológico")
+st.header(" Stack Tecnológico")
 st.code("""
 - Structural Prediction: AlphaFold2 & Rosetta
 - Molecular Dynamics: GROMACS (CUDA Optimized)
@@ -159,9 +159,10 @@ with col_metrics2:
 
 # --- CONTACTO EN SIDEBAR ---
 st.sidebar.divider()
-st.sidebar.title("📩 Contacto Corporativo")
+st.sidebar.title(" Contacto Corporativo")
 st.sidebar.write("**Email:** estrellascliente@gmail.com")
 st.sidebar.info("Google Cloud for Startups Program")
 
-with st.sidebar.expander("📂 Ver Proyecto: Cáncer de Mama"):
+with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
