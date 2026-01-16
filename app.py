@@ -99,27 +99,30 @@ elif opcion == "Seguridad Hídrica (Norovirus)":
 
     st.divider()
 
-    # --- AQUÍ INSERTAMOS EL GRÁFICO DE RAMACHANDRAN ---
+    # --- SECCIÓN DEL GRÁFICO DE RAMACHANDRAN ---
     st.subheader("📍 Validación Estereoquímica: Ramachandran Plot")
+    
+    # Esta es la parte crítica: col_img y col_txt deben estar alineados bajo este elif
     col_img, col_txt = st.columns([1.5, 1])
 
     with col_img:
         try:
-            # Asegúrate de subir el archivo 'ramachandran_plot.png' a tu GitHub
+            # Intenta cargar la imagen desde la raíz de tu GitHub
             st.image("ramachandran_plot.png", 
                      caption="Análisis de ángulos diédricos (Phi/Psi) - MolProbity", 
                      use_container_width=True)
-        except:
-            st.warning("⚠️ Archivo 'ramachandran_plot.png' no encontrado en el repositorio.")
+        except Exception as e:
+            st.warning("⚠️ No se pudo cargar 'ramachandran_plot.png'. Revisa que el nombre en GitHub sea exacto.")
+            st.error(f"Error técnico: {e}")
 
     with col_txt:
         st.write("""
         **Interpretación Técnica:**
-        - **Regiones Favorecidas:** 96.47% de los residuos en zonas de baja energía.
-        - **Outliers:** Mínimos (flexibilidad natural del dominio P2).
-        - **Calidad:** Apto para simulación de Dinámica Molecular.
+        - **Regiones Favorecidas:** 96.47% de los residuos se encuentran en las zonas de menor energía estadística.
+        - **Outliers:** Mínimos (propios de la flexibilidad del dominio P2).
+        - **Calidad:** La estructura cumple con los estándares de publicación para simulaciones de Dinámica Molecular.
         """)
-
+        
 # --- PÁGINA: SIMULACIÓN MOLECULAR ---
 elif opcion == "Simulación Molecular":
     st.title("🧬 Dinámica Molecular y Bioinformática")
@@ -219,6 +222,7 @@ def leer_archivo_cancer():
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
