@@ -142,7 +142,7 @@ st.code("""
 # --- CONTACTO Y SIDEBAR EXTRA ---
 st.sidebar.divider()
 st.sidebar.title(" Contacto Corporativo")
-st.sidebar.write("**Email:** 
+st.sidebar.write("**Email:**) 
 st.sidebar.info("C.C. 57.427.551 | Google Cloud for Startups Program")
 
 def leer_archivo_cancer():
@@ -154,4 +154,5 @@ def leer_archivo_cancer():
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
