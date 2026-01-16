@@ -111,7 +111,7 @@ elif opcion == "Dengue & Influenza":
 
 # --- PÁGINA: SEGURIDAD HÍDRICA (NOROVIRUS) ---
 elif opcion == "Seguridad Hídrica (Norovirus)":
-    st.title(" Vigilancia de Norovirus")
+    st.title("💧 Vigilancia de Norovirus")
     st.subheader("Estado del Proyecto: Validación Estructural y Estabilidad")
     
     st.markdown("""
@@ -124,34 +124,22 @@ elif opcion == "Seguridad Hídrica (Norovirus)":
         st.write("1. **Modelado:** Estructura obtenida mediante AlphaFold2.")
         st.write("2. **Validación:** Análisis de Ramachandran (96.47% favorecido).")
         st.progress(60)
-    
-    with col2:
-        st.info("**Hito Técnico:** El siguiente hito requiere instancias **NVIDIA A100** para ejecutar Dinámica Molecular (MD).")
-
-    st.divider()
-
-    # --- SECCIÓN DEL GRÁFICO (INDENTACIÓN CORREGIDA) ---
-    st.subheader(" Validación Estereoquímica: Ramachandran Plot")
-    c_img, c_txt = st.columns([1.5, 1])
-
-    with c_img:
+        # INSERTAMOS LA IMAGEN DIRECTAMENTE AQUÍ PARA QUE NO FALLE
         try:
-            # Cargamos la imagen desde la raíz
             st.image("ramachandran_plot.png", 
                      caption="Mapa de Ramachandran - Validación Estructural", 
                      use_container_width=True)
-        except Exception as e:
-            st.error(f"Error al cargar la imagen: {e}")
-            st.warning("Verifica que el nombre en GitHub sea 'ramachandran_plot.png' sin espacios.")
-
-    with c_txt:
+        except:
+            st.warning("Asegúrate de que 'ramachandran_plot.png' esté subido a GitHub.")
+    
+    with col2:
+        st.info("**Hito Técnico:** El siguiente hito requiere instancias **NVIDIA A100** para ejecutar Dinámica Molecular (MD).")
         st.write("""
-        **Interpretación Técnica:**
+        **Interpretación del Gráfico:**
         - **Regiones Favorecidas:** 96.47% de los residuos.
-        - **Outliers:** Mínimos (estabilidad confirmada).
         - **Calidad:** Estructura validada para simulación de Dinámica Molecular.
         """)
-
+        
 # --- PÁGINA: SIMULACIÓN MOLECULAR ---
 elif opcion == "Simulación Molecular":
     st.title(" Dinámica Molecular y Bioinformática")
@@ -268,6 +256,7 @@ def leer_archivo_cancer():
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
