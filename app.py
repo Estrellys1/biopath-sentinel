@@ -75,10 +75,10 @@ elif opcion == "Seguridad Hídrica (Norovirus)":
 import streamlit as st
 
 # --- CONFIGURACIÓN DE LA PÁGINA ---
-st.set_page_config(page_title="BioPath-Sentinel AI", page_icon="🧬", layout="wide")
+st.set_page_config(page_title="BioPath-Sentinel AI", page_icon="", layout="wide")
 
 # --- BARRA LATERAL (NAVEGACIÓN) ---
-st.sidebar.title("🧬 Panel de Investigación")
+st.sidebar.title(" Panel de Investigación")
 opcion = st.sidebar.radio(
     "Seleccione una línea de estudio:",
     ["Inicio", "Oncología Genómica", "Dengue & Influenza", "Seguridad Hídrica (Norovirus)", "Simulación Molecular"]
@@ -86,7 +86,7 @@ opcion = st.sidebar.radio(
 
 # --- PÁGINA: INICIO ---
 if opcion == "Inicio":
-    st.title("🛡️ BioPath-Sentinel AI")
+    st.title(" BioPath-Sentinel AI")
     st.subheader("Inteligencia Artificial para la Seguridad Biológica Global")
     st.markdown("""
     **Project Description:** "BioPath-Sentinel AI is a cloud-native genomic surveillance platform. 
@@ -97,7 +97,7 @@ if opcion == "Inicio":
 
 # --- PÁGINA: ONCOLOGÍA GENÓMICA ---
 elif opcion == "Oncología Genómica":
-    st.title("🎗️ Investigación: Cáncer de Mama")
+    st.title(" Investigación: Cáncer de Mama")
     try:
         with open("can_ma.txt", "r", encoding="utf-8") as f:
             st.markdown(f.read())
@@ -106,12 +106,12 @@ elif opcion == "Oncología Genómica":
 
 # --- PÁGINA: DENGUE & INFLUENZA ---
 elif opcion == "Dengue & Influenza":
-    st.title("🦟 Vigilancia Epidemiológica")
+    st.title(" Vigilancia Epidemiológica")
     st.markdown("Análisis estructural de patógenos mediante **AlphaFold2**.")
 
 # --- PÁGINA: SEGURIDAD HÍDRICA (NOROVIRUS) ---
 elif opcion == "Seguridad Hídrica (Norovirus)":
-    st.title("💧 Vigilancia de Norovirus")
+    st.title(" Vigilancia de Norovirus")
     st.subheader("Estado del Proyecto: Validación Estructural y Estabilidad")
     
     st.markdown("""
@@ -131,7 +131,7 @@ elif opcion == "Seguridad Hídrica (Norovirus)":
     st.divider()
 
     # --- SECCIÓN DEL GRÁFICO (INDENTACIÓN CORREGIDA) ---
-    st.subheader("📍 Validación Estereoquímica: Ramachandran Plot")
+    st.subheader(" Validación Estereoquímica: Ramachandran Plot")
     c_img, c_txt = st.columns([1.5, 1])
 
     with c_img:
@@ -154,24 +154,24 @@ elif opcion == "Seguridad Hídrica (Norovirus)":
 
 # --- PÁGINA: SIMULACIÓN MOLECULAR ---
 elif opcion == "Simulación Molecular":
-    st.title("🧬 Dinámica Molecular y Bioinformática")
+    st.title(" Dinámica Molecular y Bioinformática")
     st.markdown("Simulaciones optimizadas para **GROMACS** con aceleración por GPU.")
     
     col_a, col_b = st.columns(2)
     with col_a:
-        st.subheader("🧪 Diana Terapéutica (Salud)")
+        st.subheader(" Diana Terapéutica (Salud)")
         st.write("Entorno: 0.15 M NaCl | 310.15 K")
     with col_b:
-        st.subheader("🌊 Agua de Mar (Industrial)")
+        st.subheader(" Agua de Mar (Industrial)")
         st.write("Entorno: 0.60 M NaCl | 298.15 K")
 
 # --- CONTACTO ---
 st.sidebar.divider()
-st.sidebar.write("**📧 Email:** estrellascliente@gmail.com")
+st.sidebar.write("** Email:** estrellascliente@gmail.com")
         
 # --- PÁGINA: SIMULACIÓN MOLECULAR ---
 elif opcion == "Simulación Molecular":
-    st.title("🧬 Dinámica Molecular y Bioinformática")
+    st.title(" Dinámica Molecular y Bioinformática")
     
     st.markdown("""
     "Nuestra metodología emplea **CHARMM-GUI** para la construcción de sistemas solvatados complejos. 
@@ -182,12 +182,12 @@ elif opcion == "Simulación Molecular":
 
     c1, c2 = st.columns(2)
     with c1:
-        st.subheader("🧪 Diana Terapéutica (Salud)")
+        st.subheader(" Diana Terapéutica (Salud)")
         st.write("Fuerza iónica: **0.15 M NaCl** (Fisiológico).")
         st.caption("Temp: 310.15 K | Force Field: CHARMM36m")
         
     with c2:
-        st.subheader("🌊 Desalinización (Industrial)")
+        st.subheader(" Desalinización (Industrial)")
         st.write("Alta salinidad: **0.60 M NaCl** (Agua de mar).")
         st.caption("Temp: 298.15 K | Salinidad: 35 ppt")
 
@@ -230,7 +230,7 @@ st.code("""
 """, language="text")
 
 st.divider()
-st.subheader("🚀 Optimización del Ciclo de Respuesta")
+st.subheader(" Optimización del Ciclo de Respuesta")
 
 col_metrics1, col_metrics2 = st.columns(2)
 
@@ -268,6 +268,7 @@ def leer_archivo_cancer():
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
