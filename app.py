@@ -72,6 +72,27 @@ elif opcion == "Seguridad Hídrica (Norovirus)":
         en GROMACS, permitiendo observar la interacción ligando-receptor a escala atómica.
         """)
 
+# --- DENTRO DE LA SECCIÓN DE NOROVIRUS ---
+st.subheader("📍 Validación Estereoquímica: Ramachandran Plot")
+
+col_img, col_txt = st.columns([1.5, 1])
+
+with col_img:
+    # Intentar cargar la imagen del gráfico
+    try:
+        st.image("ramachandran_plot.png", caption="Análisis de ángulos diédricos (Phi/Psi) - MolProbity", use_container_width=True)
+    except:
+        st.warning("⚠️ Archivo 'ramachandran_plot.png' no encontrado. Por favor, súbelo al repositorio.")
+
+with col_txt:
+    st.write("""
+    **Interpretación Técnica:**
+    - **Regiones Favorecidas:** 96.47% de los residuos se encuentran en las zonas de menor energía estadística.
+    - **Outliers:** Mínimos (propios de la flexibilidad del dominio P2).
+    - **Calidad:** La estructura cumple con los estándares de publicación para simulaciones de Dinámica Molecular.
+    """)
+    st.markdown("> *Validación estereoquímica de modelos proteicos mediante análisis de ángulos diédricos y Clashscore.*")
+
 # --- PÁGINA: SIMULACIÓN MOLECULAR ---
 elif opcion == "Simulación Molecular":
     st.title(" Dinámica Molecular y Bioinformática")
@@ -178,6 +199,7 @@ def leer_archivo_cancer():
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
