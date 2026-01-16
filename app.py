@@ -61,22 +61,30 @@ elif opcion == "Seguridad Hídrica (Norovirus)":
         st.write("2. **Validación:** Análisis de Ramachandran (96.47% favorecido).")
         st.progress(60)
         
-        
-        # INSERTAMOS LA IMAGEN AQUÍ
+         # --- SECCIÓN DE VALIDACIÓN (NOROVIRUS) ---
+    st.divider()
+    st.subheader("📍 Validación Estereoquímica: Ramachandran Plot")
+
+    col_img, col_txt = st.columns([1.5, 1])
+
+    with col_img:
         try:
+            # Lógica de carga de imagen
             st.image("ramachandran_plot.png", 
                      caption="Mapa de Ramachandran - Validación Estructural", 
                      use_container_width=True)
         except:
-            st.warning(" Archivo 'ramachandran_plot.png' no encontrado en el repositorio.")
+            st.warning("⚠️ Archivo 'ramachandran_plot.png' no encontrado en el repositorio.")
     
-    with col2:
+    with col_txt:
         st.info("**Hito Técnico:** El siguiente hito requiere instancias **NVIDIA A100** para ejecutar Dinámica Molecular (MD).")
+        
         st.write("""
         **Interpretación del Gráfico:**
         - **Regiones Favorecidas:** 96.47% de los residuos.
         - **Calidad:** Estructura validada para simulación de Dinámica Molecular.
         """)
+        
         st.write("""
         **Análisis de Residuos:**
         Cada punto blanco representa un residuo aminoacídico. La alta densidad en las zonas verdes 
@@ -172,6 +180,7 @@ st.sidebar.info("Google Cloud for Startups Program")
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
