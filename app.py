@@ -1,7 +1,7 @@
 import streamlit as st
 
 # --- CONFIGURACIÓN DE LA PÁGINA ---
-st.set_page_config(page_title="BioPath-Sentinel AI", page_icon="", layout="wide")
+st.set_page_config(page_title="BioPath-Sentinel AI", page_icon="🧬", layout="wide")
 
 # --- BARRA LATERAL (NAVEGACIÓN) ---
 st.sidebar.title(" Panel de Investigación")
@@ -219,6 +219,7 @@ def leer_archivo_cancer():
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
