@@ -72,57 +72,77 @@ elif opcion == "Seguridad Hídrica (Norovirus)":
         en GROMACS, permitiendo observar la interacción ligando-receptor a escala atómica.
         """)
 
-# --- DENTRO DE LA SECCIÓN DE NOROVIRUS ---
-st.subheader("📍 Validación Estereoquímica: Ramachandran Plot")
-
-col_img, col_txt = st.columns([1.5, 1])
-
-with col_img:
-    # Intentar cargar la imagen del gráfico
-    try:
-        st.image("ramachandran_plot.png", caption="Análisis de ángulos diédricos (Phi/Psi) - MolProbity", use_container_width=True)
-    except:
-        st.warning("⚠️ Archivo 'ramachandran_plot.png' no encontrado. Por favor, súbelo al repositorio.")
-
-with col_txt:
-    st.write("""
-    **Interpretación Técnica:**
-    - **Regiones Favorecidas:** 96.47% de los residuos se encuentran en las zonas de menor energía estadística.
-    - **Outliers:** Mínimos (propios de la flexibilidad del dominio P2).
-    - **Calidad:** La estructura cumple con los estándares de publicación para simulaciones de Dinámica Molecular.
+# --- PÁGINA: SEGURIDAD HÍDRICA (NOROVIRUS) ---
+elif opcion == "Seguridad Hídrica (Norovirus)":
+    st.title("💧 Vigilancia de Norovirus")
+    st.subheader("Estado del Proyecto: Validación Estructural y Estabilidad")
+    
+    st.markdown("""
+    "Estamos analizando la estabilidad estructural de la proteína de la cápside del Norovirus Humano. 
+    Tras la predicción con **AlphaFold2**, realizamos **validación estereoquímica** mediante mapas de **Ramachandran** y análisis de **Clashscore** para asegurar la calidad del modelo."
     """)
-    st.markdown("> *Validación estereoquímica de modelos proteicos mediante análisis de ángulos diédricos y Clashscore.*")
+
+    col1, col2 = st.columns(2)
+    with col1:
+        st.write("""
+        1. **Modelado:** Estructura obtenida mediante AlphaFold2.
+        2. **Validación:** Análisis de Ramachandran completado (96.47% en regiones favorecidas).
+        3. **Próximo Paso:** Simulación de Dinámica Molecular (MD) para evaluar estabilidad.
+        """)
+        st.progress(60) 
+    
+    with col2:
+        st.info("""
+        **Hito Técnico:** El siguiente hito requiere instancias **NVIDIA A100** para ejecutar Dinámica Molecular (MD) 
+        en GROMACS, permitiendo observar la interacción ligando-receptor a escala atómica.
+        """)
+
+    st.divider()
+
+    # --- AQUÍ INSERTAMOS EL GRÁFICO DE RAMACHANDRAN ---
+    st.subheader("📍 Validación Estereoquímica: Ramachandran Plot")
+    col_img, col_txt = st.columns([1.5, 1])
+
+    with col_img:
+        try:
+            # Asegúrate de subir el archivo 'ramachandran_plot.png' a tu GitHub
+            st.image("ramachandran_plot.png", 
+                     caption="Análisis de ángulos diédricos (Phi/Psi) - MolProbity", 
+                     use_container_width=True)
+        except:
+            st.warning("⚠️ Archivo 'ramachandran_plot.png' no encontrado en el repositorio.")
+
+    with col_txt:
+        st.write("""
+        **Interpretación Técnica:**
+        - **Regiones Favorecidas:** 96.47% de los residuos en zonas de baja energía.
+        - **Outliers:** Mínimos (flexibilidad natural del dominio P2).
+        - **Calidad:** Apto para simulación de Dinámica Molecular.
+        """)
 
 # --- PÁGINA: SIMULACIÓN MOLECULAR ---
 elif opcion == "Simulación Molecular":
-    st.title(" Dinámica Molecular y Bioinformática")
+    st.title("🧬 Dinámica Molecular y Bioinformática")
     
     st.markdown("""
-    "Nuestra metodología emplea **CHARMM-GUI** para la construcción de sistemas solvatados complejos, 
-    asegurando condiciones fisiológicas precisas. Los outputs generados son optimizados para **GROMACS**, 
-    aprovechando los kernels de aceleración **CUDA** en las GPUs de Google Cloud."
+    "Nuestra metodología emplea **CHARMM-GUI** para la construcción de sistemas solvatados complejos. 
+    Los outputs generados son optimizados para **GROMACS**, aprovechando los kernels de aceleración **CUDA** en las GPUs de Google Cloud."
     """)
 
     st.divider()
 
     c1, c2 = st.columns(2)
     with c1:
-        st.subheader(" Diana Terapéutica (Salud)")
-        st.write("""
-        Entorno preparado con una fuerza iónica de **0.15 M NaCl** para simulaciones de alta fidelidad 
-        orientadas al descubrimiento de fármacos.
-        """)
+        st.subheader("🧪 Diana Terapéutica (Salud)")
+        st.write("Fuerza iónica: **0.15 M NaCl** (Fisiológico).")
         st.caption("Temp: 310.15 K | Force Field: CHARMM36m")
         
     with c2:
-        st.subheader(" Desalinización (Industrial)")
-        st.write("""
-        Sistemas de **alta salinidad (0.60 M NaCl)** para predecir el comportamiento del virus en agua de mar 
-        y optimizar el rendimiento de membranas de ósmosis inversa.
-        """)
+        st.subheader("🌊 Desalinización (Industrial)")
+        st.write("Alta salinidad: **0.60 M NaCl** (Agua de mar).")
         st.caption("Temp: 298.15 K | Salinidad: 35 ppt")
 
-    st.success("Scripts optimizados para GROMACS 2024+ (Escala de microsegundos).")
+    st.success("Scripts optimizados para GROMACS 2024+.")
 
 # --- SECCIÓN INFERIOR GENERAL ---
 st.divider()
@@ -199,6 +219,7 @@ def leer_archivo_cancer():
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
