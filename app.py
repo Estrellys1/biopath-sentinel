@@ -1,10 +1,10 @@
 import streamlit as st
 
 # --- CONFIGURACIÓN DE LA PÁGINA ---
-st.set_page_config(page_title="BioPath-Sentinel AI", page_icon="🧬", layout="wide")
+st.set_page_config(page_title="BioPath-Sentinel AI", page_icon="", layout="wide")
 
 # --- BARRA LATERAL (NAVEGACIÓN) ---
-st.sidebar.title("🧬 Panel de Investigación")
+st.sidebar.title(" Panel de Investigación")
 opcion = st.sidebar.radio(
     "Seleccione una línea de estudio:",
     ["Inicio", "Oncología Genómica", "Dengue & Influenza", "Seguridad Hídrica (Norovirus)", "Simulación Molecular"]
@@ -28,7 +28,7 @@ if opcion == "Inicio":
 
 # --- PÁGINA: ONCOLOGÍA GENÓMICA ---
 elif opcion == "Oncología Genómica":
-    st.title("🎗️ Investigación: Cáncer de Mama")
+    st.title(" Investigación: Cáncer de Mama")
     st.subheader("Medicina de Precisión y Patrones Genómicos")
     
     # Intento de lectura del archivo
@@ -40,7 +40,7 @@ elif opcion == "Oncología Genómica":
 
 # --- PÁGINA: DENGUE & INFLUENZA ---
 elif opcion == "Dengue & Influenza":
-    st.title("🦟 Vigilancia Epidemiológica")
+    st.title(" Vigilancia Epidemiológica")
     st.write("Modelado estructural de patógenos virales.")
     st.markdown("""
     Análisis realizado mediante **AlphaFold2** para predecir la interacción de proteínas en variantes de Dengue e Influenza. 
@@ -74,7 +74,7 @@ elif opcion == "Seguridad Hídrica (Norovirus)":
 
 # --- PÁGINA: SIMULACIÓN MOLECULAR ---
 elif opcion == "Simulación Molecular":
-    st.title("🧬 Dinámica Molecular y Bioinformática")
+    st.title(" Dinámica Molecular y Bioinformática")
     
     st.markdown("""
     "Nuestra metodología emplea **CHARMM-GUI** para la construcción de sistemas solvatados complejos, 
@@ -86,7 +86,7 @@ elif opcion == "Simulación Molecular":
 
     c1, c2 = st.columns(2)
     with c1:
-        st.subheader("🧪 Diana Terapéutica (Salud)")
+        st.subheader(" Diana Terapéutica (Salud)")
         st.write("""
         Entorno preparado con una fuerza iónica de **0.15 M NaCl** para simulaciones de alta fidelidad 
         orientadas al descubrimiento de fármacos.
@@ -94,7 +94,7 @@ elif opcion == "Simulación Molecular":
         st.caption("Temp: 310.15 K | Force Field: CHARMM36m")
         
     with c2:
-        st.subheader("🌊 Desalinización (Industrial)")
+        st.subheader(" Desalinización (Industrial)")
         st.write("""
         Sistemas de **alta salinidad (0.60 M NaCl)** para predecir el comportamiento del virus en agua de mar 
         y optimizar el rendimiento de membranas de ósmosis inversa.
@@ -106,14 +106,14 @@ elif opcion == "Simulación Molecular":
 # --- SECCIÓN INFERIOR GENERAL ---
 st.divider()
 st.markdown("""
-### 🚀 Valor Tecnológico de BioPath-Sentinel AI
+###  Valor Tecnológico de BioPath-Sentinel AI
 Nuestra Infraestructura Computacional permite procesar sistemas de alta complejidad. Mientras en el sector salud esto nos permite 
 estabilizar proteínas virales, en el sector industrial nos permite predecir el desgaste de membranas de ósmosis inversa, 
 **reduciendo costos operativos en plantas desalinizadoras hasta en un 15%**.
 """)
 
 # --- SEGMENTOS DE IMPACTO ---
-st.header("🌎 Áreas de Aplicación")
+st.header(" Áreas de Aplicación")
 ca, cb, cc = st.columns(3)
 
 with ca:
@@ -131,7 +131,7 @@ with cc:
 
 # --- STACK TECNOLÓGICO ---
 st.divider()
-st.header("🛠️ Stack Tecnológico")
+st.header(" Stack Tecnológico")
 st.code("""
 - Structural Prediction: AlphaFold2 & Rosetta
 - Molecular Dynamics: GROMACS (CUDA Optimized)
@@ -141,9 +141,8 @@ st.code("""
 
 # --- CONTACTO Y SIDEBAR EXTRA ---
 st.sidebar.divider()
-st.sidebar.title("📩 Contacto Corporativo")
-st.sidebar.write("**Investigadora:** Ingrid Alvarado")
-st.sidebar.write("**Email:** tecnolineip@gmail.com")
+st.sidebar.title(" Contacto Corporativo")
+st.sidebar.write("**Email:** 
 st.sidebar.info("C.C. 57.427.551 | Google Cloud for Startups Program")
 
 def leer_archivo_cancer():
@@ -153,5 +152,6 @@ def leer_archivo_cancer():
     except:
         return "Contenido genómico en proceso de carga..."
 
-with st.sidebar.expander("📄 Ver Proyecto: Cáncer de Mama"):
+with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
