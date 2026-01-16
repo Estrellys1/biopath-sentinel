@@ -93,7 +93,7 @@ elif opcion == "Seguridad Hídrica (Norovirus)":
 
     st.divider()
 
-    # --- SECCIÓN DEL GRÁFICO (SOLO UNA VEZ) ---
+ # --- SECCIÓN DEL GRÁFICO (SOLO UNA VEZ) ---
     st.subheader("📍 Validación Estereoquímica: Ramachandran Plot")
     c_img, c_txt = st.columns([1.5, 1])
 
@@ -209,6 +209,7 @@ def leer_archivo_cancer():
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
