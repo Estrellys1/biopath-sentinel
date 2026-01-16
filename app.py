@@ -51,11 +51,13 @@ opcion = st.sidebar.radio(
 if opcion == "Inicio":
     st.title(" BioPath-Sentinel AI")
     st.subheader("Inteligencia Artificial para la Seguridad Biológica Global")
+    
     st.markdown("""
     **Project Description:** "BioPath-Sentinel AI is a cloud-native genomic surveillance platform. 
     We leverage **Deep Learning** and **Molecular Dynamics** to protect critical infrastructure. 
     Our pipeline integrates **AlphaFold2** for structural modeling and **GROMACS** for molecular simulation."
     """)
+    
     st.info("Seleccione una investigación en el menú de la izquierda para ver los detalles técnicos.")
 
 # --- PÁGINA: ONCOLOGÍA GENÓMICA ---
@@ -219,6 +221,7 @@ def leer_archivo_cancer():
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
