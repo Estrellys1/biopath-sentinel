@@ -72,6 +72,43 @@ elif opcion == "Seguridad Hídrica (Norovirus)":
         en GROMACS, permitiendo observar la interacción ligando-receptor a escala atómica.
         """)
 
+import streamlit as st
+
+# --- CONFIGURACIÓN DE LA PÁGINA ---
+st.set_page_config(page_title="BioPath-Sentinel AI", page_icon="🧬", layout="wide")
+
+# --- BARRA LATERAL (NAVEGACIÓN) ---
+st.sidebar.title("🧬 Panel de Investigación")
+opcion = st.sidebar.radio(
+    "Seleccione una línea de estudio:",
+    ["Inicio", "Oncología Genómica", "Dengue & Influenza", "Seguridad Hídrica (Norovirus)", "Simulación Molecular"]
+)
+
+# --- PÁGINA: INICIO ---
+if opcion == "Inicio":
+    st.title("🛡️ BioPath-Sentinel AI")
+    st.subheader("Inteligencia Artificial para la Seguridad Biológica Global")
+    st.markdown("""
+    **Project Description:** "BioPath-Sentinel AI is a cloud-native genomic surveillance platform. 
+    We leverage **Deep Learning** and **Molecular Dynamics** to protect critical infrastructure. 
+    Our pipeline integrates **AlphaFold2** for structural modeling and **GROMACS** for molecular simulation."
+    """)
+    st.info("Seleccione una investigación en el menú de la izquierda para ver los detalles técnicos.")
+
+# --- PÁGINA: ONCOLOGÍA GENÓMICA ---
+elif opcion == "Oncología Genómica":
+    st.title("🎗️ Investigación: Cáncer de Mama")
+    try:
+        with open("can_ma.txt", "r", encoding="utf-8") as f:
+            st.markdown(f.read())
+    except:
+        st.write("Cargando datos de investigación genómica...")
+
+# --- PÁGINA: DENGUE & INFLUENZA ---
+elif opcion == "Dengue & Influenza":
+    st.title("🦟 Vigilancia Epidemiológica")
+    st.markdown("Análisis estructural de patógenos mediante **AlphaFold2**.")
+
 # --- PÁGINA: SEGURIDAD HÍDRICA (NOROVIRUS) ---
 elif opcion == "Seguridad Hídrica (Norovirus)":
     st.title("💧 Vigilancia de Norovirus")
@@ -84,31 +121,53 @@ elif opcion == "Seguridad Hídrica (Norovirus)":
 
     col1, col2 = st.columns(2)
     with col1:
-        st.write("1. **Modelado:** AlphaFold2.")
-        st.write("2. **Validación:** Ramachandran (96.47% favorecido).")
+        st.write("1. **Modelado:** Estructura obtenida mediante AlphaFold2.")
+        st.write("2. **Validación:** Análisis de Ramachandran (96.47% favorecido).")
         st.progress(60)
     
     with col2:
-        st.info("Hito Técnico: Requiere instancias **NVIDIA A100** para Dinámica Molecular en GROMACS.")
+        st.info("**Hito Técnico:** El siguiente hito requiere instancias **NVIDIA A100** para ejecutar Dinámica Molecular (MD).")
 
     st.divider()
 
- # --- SECCIÓN DEL GRÁFICO (SOLO UNA VEZ) ---
+    # --- SECCIÓN DEL GRÁFICO (INDENTACIÓN CORREGIDA) ---
     st.subheader("📍 Validación Estereoquímica: Ramachandran Plot")
     c_img, c_txt = st.columns([1.5, 1])
 
     with c_img:
-        # Asegúrate de que el archivo se llame EXACTAMENTE ramachandran_plot.png en GitHub
-        st.image("ramachandran_plot.png", 
-                 caption="Mapa de Ramachandran - Validación MolProbity", 
-                 use_container_width=True)
+        try:
+            # Cargamos la imagen desde la raíz
+            st.image("ramachandran_plot.png", 
+                     caption="Mapa de Ramachandran - Validación Estructural", 
+                     use_container_width=True)
+        except Exception as e:
+            st.error(f"Error al cargar la imagen: {e}")
+            st.warning("Verifica que el nombre en GitHub sea 'ramachandran_plot.png' sin espacios.")
 
     with c_txt:
         st.write("""
         **Interpretación Técnica:**
-        - **Regiones Favorecidas:** 96.47%
-        - **Calidad:** Estructura validada para simulación MD.
+        - **Regiones Favorecidas:** 96.47% de los residuos.
+        - **Outliers:** Mínimos (estabilidad confirmada).
+        - **Calidad:** Estructura validada para simulación de Dinámica Molecular.
         """)
+
+# --- PÁGINA: SIMULACIÓN MOLECULAR ---
+elif opcion == "Simulación Molecular":
+    st.title("🧬 Dinámica Molecular y Bioinformática")
+    st.markdown("Simulaciones optimizadas para **GROMACS** con aceleración por GPU.")
+    
+    col_a, col_b = st.columns(2)
+    with col_a:
+        st.subheader("🧪 Diana Terapéutica (Salud)")
+        st.write("Entorno: 0.15 M NaCl | 310.15 K")
+    with col_b:
+        st.subheader("🌊 Agua de Mar (Industrial)")
+        st.write("Entorno: 0.60 M NaCl | 298.15 K")
+
+# --- CONTACTO ---
+st.sidebar.divider()
+st.sidebar.write("**📧 Email:** estrellascliente@gmail.com")
         
 # --- PÁGINA: SIMULACIÓN MOLECULAR ---
 elif opcion == "Simulación Molecular":
@@ -209,6 +268,7 @@ def leer_archivo_cancer():
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
