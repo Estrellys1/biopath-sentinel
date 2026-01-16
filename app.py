@@ -35,43 +35,6 @@ elif opcion == "Oncología Genómica":
     try:
         with open("can_ma.txt", "r", encoding="utf-8") as f:
             st.markdown(f.read())
-    except:
-        st.write("Cargando datos de investigación genómica acelerada por GPU...")
-
-# --- PÁGINA: DENGUE & INFLUENZA ---
-elif opcion == "Dengue & Influenza":
-    st.title(" Vigilancia Epidemiológica")
-    st.write("Modelado estructural de patógenos virales.")
-    st.markdown("""
-    Análisis realizado mediante **AlphaFold2** para predecir la interacción de proteínas en variantes de Dengue e Influenza. 
-    Predicción de mutaciones críticas para la respuesta inmunológica.
-    """)
-
-# --- PÁGINA: SEGURIDAD HÍDRICA (NOROVIRUS) ---
-elif opcion == "Seguridad Hídrica (Norovirus)":
-    st.title(" Vigilancia de Norovirus")
-    st.subheader("Estado del Proyecto: Validación Estructural y Estabilidad")
-    
-    st.markdown("""
-    "Estamos analizando la estabilidad estructural de la proteína de la cápside del Norovirus Humano. 
-    Tras la predicción con **AlphaFold2**, realizamos **validación estereoquímica** mediante mapas de **Ramachandran** y análisis de **Clashscore** para asegurar la calidad del modelo."
-    """)
-
-    col1, col2 = st.columns(2)
-    with col1:
-        st.write("""
-        1. **Modelado:** Estructura obtenida mediante AlphaFold2.
-        2. **Validación:** Análisis de Ramachandran completado (96.47% en regiones favorecidas).
-        3. **Próximo Paso:** Simulación de Dinámica Molecular (MD) para evaluar estabilidad en diferentes salinidades.
-        """)
-        st.progress(60) 
-    
-    with col2:
-        st.info("""
-        **Hito Técnico:** El siguiente hito requiere instancias **NVIDIA A100** para ejecutar Dinámica Molecular (MD) 
-        en GROMACS, permitiendo observar la interacción ligando-receptor a escala atómica.
-        """)
-
 import streamlit as st
 
 # --- CONFIGURACIÓN DE LA PÁGINA ---
@@ -256,6 +219,7 @@ def leer_archivo_cancer():
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
