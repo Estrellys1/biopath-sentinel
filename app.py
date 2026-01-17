@@ -41,11 +41,11 @@ elif opcion == "Oncología Genómica":
     st.markdown(leer_archivo_cancer())
 
 elif opcion == "Dengue & Influenza":
-    st.title("🦟 Vigilancia Epidemiológica: Dengue en Colombia")
+    st.title(" Vigilancia Epidemiológica: Dengue en Colombia")
     st.subheader("Fase 1: Análisis de Variabilidad Genómica")
     
     # 1. Resumen visual (lo que ya tienes está perfecto)
-    with st.expander("🔍 Ver Alineamiento Representativo", expanded=True):
+    with st.expander(" Ver Alineamiento Representativo", expanded=True):
         st.code("""
 DENV-1  MNNQRKKTGRPSFNMLKRARNRVSTGSQLAKRFSKGLL...
 DENV-2  MNNQRKKARSTPFNMLKRERNRVSTVQQLTKRFSLGML...
@@ -53,13 +53,13 @@ DENV-3  M-NQRKKVVRPPFNMLKRERNRVSTPQGLVKRFSTGLF...
 DENV-4  M-NQRKKVVRPPFNMLKRERNRVSTPQGLVKRFSTGLF...
         * ******* ********* **** * *** *
         """, language="text")
-        st.info("💡 Este resumen muestra las posiciones clave donde los serotipos de Colombia divergen.")
+        st.info(" Este resumen muestra las posiciones clave donde los serotipos de Colombia divergen.")
 
     # 2. Botón para descargar el archivo completo
     try:
         with open("Dengue_Colombia_Alineado.fasta", "rb") as file:
             st.download_button(
-                label="📥 Descargar Alineamiento Completo (FASTA)",
+                label=" Descargar Alineamiento Completo (FASTA)",
                 data=file,
                 file_name="Dengue_Colombia_Alineado.fasta",
                 mime="text/plain"
@@ -69,7 +69,7 @@ DENV-4  M-NQRKKVVRPPFNMLKRERNRVSTPQGLVKRFSTGLF...
 
     # 3. Sección del Árbol (Aquí es donde brilla tu tesis)
     st.divider()
-    st.subheader("🌳 Análisis Filogenético Interactivo")
+    st.subheader(" Análisis Filogenético Interactivo")
     st.write("Carga el archivo `.treefile` generado por IQ-TREE para visualizar la evolución del virus.")
     
     # Aquí es donde usarás el archivo que estás procesando en IQ-TREE
@@ -96,7 +96,7 @@ elif opcion == "Seguridad Hídrica (Norovirus)":
         
          # --- SECCIÓN DE VALIDACIÓN (NOROVIRUS) ---
     st.divider()
-    st.subheader("📍 Validación Estereoquímica: Ramachandran Plot")
+    st.subheader(" Validación Estereoquímica: Ramachandran Plot")
 
     col_img, col_txt = st.columns([1.5, 1])
 
@@ -107,7 +107,7 @@ elif opcion == "Seguridad Hídrica (Norovirus)":
                      caption="Mapa de Ramachandran - Validación Estructural", 
                      use_container_width=True)
         except:
-            st.warning("⚠️ Archivo 'ramachandran_plot.png' no encontrado en el repositorio.")
+            st.warning(" Archivo 'ramachandran_plot.png' no encontrado en el repositorio.")
     
     with col_txt:
         st.info("**Hito Técnico:** El siguiente hito requiere instancias **NVIDIA A100** para ejecutar Dinámica Molecular (MD).")
@@ -190,7 +190,7 @@ st.code("""
 
 # --- MÉTRICAS ---
 st.divider()
-st.subheader("📊 Optimización del Ciclo de Respuesta")
+st.subheader(" Optimización del Ciclo de Respuesta")
 col_metrics1, col_metrics2 = st.columns(2)
 
 with col_metrics1:
@@ -213,6 +213,7 @@ st.sidebar.info("Google Cloud for Startups Program")
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
