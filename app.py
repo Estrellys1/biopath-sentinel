@@ -40,19 +40,12 @@ elif opcion == "Oncología Genómica":
     st.subheader("Medicina de Precisión y Patrones Genómicos")
     st.markdown(leer_archivo_cancer())
 
-# --- PÁGINA: DENGUE & INFLUENZA ---
 elif opcion == "Dengue & Influenza":
     st.title("🦟 Vigilancia Epidemiológica: Dengue en Colombia")
     st.subheader("Fase 1: Análisis de Variabilidad Genómica")
     
-    st.markdown("""
-    En esta fase se analizan las secuencias de la **Proteína de Envoltura (E)** de los serotipos 1, 2, 3 y 4 
-    circulantes en Colombia. El objetivo es identificar mutaciones clave antes del modelado estructural.
-    """)
-
-    # --- SUBSECCIÓN: ALINEAMIENTO ---
-    with st.expander("🔍 Ver Alineamiento Múltiple (MAFFT L-INS-i)", expanded=True):
-        st.write("Resultado del alineamiento de 79 secuencias colombianas:")
+    # 1. Resumen visual (lo que ya tienes está perfecto)
+    with st.expander("🔍 Ver Alineamiento Representativo", expanded=True):
         st.code("""
 DENV-1  MNNQRKKTGRPSFNMLKRARNRVSTGSQLAKRFSKGLL...
 DENV-2  MNNQRKKARSTPFNMLKRERNRVSTVQQLTKRFSLGML...
@@ -60,36 +53,30 @@ DENV-3  M-NQRKKVVRPPFNMLKRERNRVSTPQGLVKRFSTGLF...
 DENV-4  M-NQRKKVVRPPFNMLKRERNRVSTPQGLVKRFSTGLF...
         * ******* ********* **** * *** *
         """, language="text")
-        st.info("💡 Los '*' indican aminoácidos conservados. Las letras distintas representan la divergencia evolutiva entre serotipos.")
+        st.info("💡 Este resumen muestra las posiciones clave donde los serotipos de Colombia divergen.")
 
-    # --- SUBSECCIÓN: FILOGENIA ---
+    # 2. Botón para descargar el archivo completo
+    try:
+        with open("Dengue_Colombia_Alineado.fasta", "rb") as file:
+            st.download_button(
+                label="📥 Descargar Alineamiento Completo (FASTA)",
+                data=file,
+                file_name="Dengue_Colombia_Alineado.fasta",
+                mime="text/plain"
+            )
+    except:
+        st.caption("Nota: El archivo completo estará disponible para descarga una vez se vincule al servidor.")
+
+    # 3. Sección del Árbol (Aquí es donde brilla tu tesis)
     st.divider()
-    st.subheader("🌳 Análisis Filogenético")
+    st.subheader("🌳 Análisis Filogenético Interactivo")
+    st.write("Carga el archivo `.treefile` generado por IQ-TREE para visualizar la evolución del virus.")
     
-    col_tree1, col_tree2 = st.columns([1.5, 1])
-    
-    with col_tree1:
-        # Aquí es donde subirás el archivo .treefile cuando termine IQ-TREE
-        archivo_arbol = st.file_uploader("Cargar árbol filogenético (.treefile)", type=['treefile', 'nwk'])
-        if archivo_arbol:
-            st.success("Árbol cargado. Procesando visualización...")
-            # Aquí irá la lógica de Bio.Phylo que te pasé antes
-        else:
-            st.warning("Pendiente: Cargar archivo generado por IQ-TREE 2.")
-
-    with col_tree2:
-        st.markdown("""
-        **Parámetros de validación:**
-        - **Modelo:** Selección automática (Auto-detect).
-        - **Bootstrap:** 1000 réplicas (Ultrafast).
-        - **Herramienta:** IQ-TREE 2.
-        """)
-        st.info("Este análisis permite identificar el linaje predominante en la región andina.")
-
-    # --- VÍNCULO A FASE 2 ---
-    st.divider()
-    st.subheader("🚀 Próximo Paso: Fase 2")
-    st.write("Las mutaciones identificadas en el dominio EDIII serán modeladas mediante **AlphaFold2** para evaluar cambios en la estabilidad de la proteína.")
+    # Aquí es donde usarás el archivo que estás procesando en IQ-TREE
+    archivo_arbol = st.file_uploader("Subir archivo del árbol", type=['treefile', 'nwk'])
+    if archivo_arbol:
+        st.success("¡Árbol detectado! Generando visualización de clados...")
+        # Aquí insertaremos el código de Phylo.draw que te pasé antes
 
 # --- PÁGINA: SEGURIDAD HÍDRICA (NOROVIRUS) ---
 elif opcion == "Seguridad Hídrica (Norovirus)":
@@ -226,6 +213,7 @@ st.sidebar.info("Google Cloud for Startups Program")
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
