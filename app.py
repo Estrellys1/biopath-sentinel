@@ -79,7 +79,7 @@ elif opcion == "Oncología Genómica":
             # Aquí debes tener el archivo 'correlation_heatmap.png' que sale de tu matriz de correlación
             st.image("correlation_heatmap.png", caption="Heatmap de Correlación de Expresión", use_container_width=True)
         except:
-            st.warning(" Sube la imagen 'correlation_heatmap.png' (la matriz de colores de tu notebook).")
+            st.warning(" 'correlation_heatmap.png' ().")
     
     with col_txt:
         st.write("####  Interpretación del Heatmap")
@@ -296,6 +296,7 @@ st.sidebar.info("Google Cloud for Startups Program")
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
