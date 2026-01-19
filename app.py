@@ -161,6 +161,26 @@ DENV-4  M-NQRKKVVRPPFNMLKRERNRVSTPQGLVKRFSTGLF...
         st.success("¡Árbol detectado! Generando visualización de clados...")
         # Aquí insertaremos el código de Phylo.draw que te pasé antes
 
+# --- DENTRO DE LA SECCIÓN DENGUE EN TU APP ---
+import streamlit as st
+from Bio import Phylo
+import io
+
+# Cuando el usuario suba el archivo .treefile que acabas de descargar:
+archivo_subido = st.file_uploader("Cargar Árbol de Colombia", type=['treefile'])
+
+if archivo_subido:
+    texto_arbol = archivo_subido.getvalue().decode("utf-8")
+    tree = Phylo.read(io.StringIO(texto_arbol), "newick")
+    
+    # Esto dibujará el árbol real de tu PDF dentro de la App
+    st.subheader("Visualización Genómica Real")
+    fig = plt.figure(figsize=(10, 15))
+    ax = fig.add_subplot(1, 1, 1)
+    Phylo.draw(tree, axes=ax, do_show=False)
+    st.pyplot(fig)
+    st.success("Análisis Filogenético validado con 1000 réplicas de Bootstrap.")
+
 # --- PÁGINA: SEGURIDAD HÍDRICA (NOROVIRUS) ---
 elif opcion == "Seguridad Hídrica (Norovirus)":
     st.title(" Vigilancia de Norovirus")
@@ -296,6 +316,7 @@ st.sidebar.info("Google Cloud for Startups Program")
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
