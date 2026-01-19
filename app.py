@@ -79,10 +79,10 @@ elif opcion == "Oncología Genómica":
             # Aquí debes tener el archivo 'correlation_heatmap.png' que sale de tu matriz de correlación
             st.image("correlation_heatmap.png", caption="Heatmap de Correlación de Expresión", use_container_width=True)
         except:
-            st.warning("⚠️ Sube la imagen 'correlation_heatmap.png' (la matriz de colores de tu notebook).")
+            st.warning(" Sube la imagen 'correlation_heatmap.png' (la matriz de colores de tu notebook).")
     
     with col_txt:
-        st.write("#### 🌡️ Interpretación del Heatmap")
+        st.write("####  Interpretación del Heatmap")
         st.write("""
         Esta matriz revela cómo grupos de genes (clústeres) interactúan entre sí. 
         - **Zonas Rojas:** Genes que se co-expresan (oncogenes potenciales).
@@ -110,14 +110,14 @@ elif opcion == "Oncología Genómica":
         """, language="python")
         
     with tab_eval:
-        st.write("#### 📈 Resultados de Predicción")
+        st.write("####  Resultados de Predicción")
         # Basado en tus gráficas de distribución de Vital Status
         try:
             st.image("survival_distribution.png", caption="Distribución de Supervivencia Global", use_container_width=True)
         except:
-            st.info("📊 Distribución: El modelo muestra una alta capacidad para distinguir entre grupos de bajo y alto riesgo.")
+            st.info(" Distribución: El modelo muestra una alta capacidad para distinguir entre grupos de bajo y alto riesgo.")
         
-        st.success("🎯 **Hito de Tesis:** El modelo logra capturar la complejidad no lineal de la expresión génica, superando en precisión a los modelos estadísticos tradicionales de Cox.")
+        st.success(" **Hito de Tesis:** El modelo logra capturar la complejidad no lineal de la expresión génica, superando en precisión a los modelos estadísticos tradicionales de Cox.")
 
     # --- 5. CIERRE ---
     st.divider()
@@ -296,6 +296,7 @@ st.sidebar.info("Google Cloud for Startups Program")
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
