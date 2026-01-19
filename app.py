@@ -128,11 +128,11 @@ elif opcion == "Oncología Genómica":
 
 # --- PÁGINA: DENGUE & INFLUENZA ---
 elif opcion == "Dengue & Influenza":
-    st.title("🦟 Vigilancia Epidemiológica: Dengue en Colombia")
+    st.title(" Vigilancia Epidemiológica: Dengue en Colombia")
     st.subheader("Fase 1: Análisis de Variabilidad Genómica")
     
     # 1. SECCIÓN MAFFT (Alineamiento)
-    with st.expander("🔍 Ver Alineamiento Representativo (MAFFT)", expanded=True):
+    with st.expander(" Ver Alineamiento Representativo (MAFFT)", expanded=True):
         st.code("""
 DENV-1  MNNQRKKTGRPSFNMLKRARNRVSTGSQLAKRFSKGLL...
 DENV-2  MNNQRKKARSTPFNMLKRERNRVSTVQQLTKRFSLGML...
@@ -140,7 +140,7 @@ DENV-3  M-NQRKKVVRPPFNMLKRERNRVSTPQGLVKRFSTGLF...
 DENV-4  M-NQRKKVVRPPFNMLKRERNRVSTPQGLVKRFSTGLF...
         * ******* ********* **** * *** *
         """, language="text")
-        st.info("💡 Este resumen muestra las posiciones clave donde los serotipos de Colombia divergen.")
+        st.info(" Este resumen muestra las posiciones clave donde los serotipos de Colombia divergen.")
 
     # 2. PARTE INFORMATIVA (Resultados fijos del árbol de hoy)
     st.divider()
@@ -334,6 +334,7 @@ st.sidebar.info("Google Cloud for Startups Program")
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
