@@ -1,4 +1,7 @@
 import streamlit as st
+import matplotlib.pyplot as plt
+from Bio import Phylo
+import io
 
 # --- CONFIGURACIÓN DE LA PÁGINA ---
 st.set_page_config(page_title="BioPath-Sentinel AI", page_icon="", layout="wide")
@@ -331,6 +334,7 @@ st.sidebar.info("Google Cloud for Startups Program")
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
