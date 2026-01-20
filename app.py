@@ -202,7 +202,7 @@ DENV-4  M-NQRKKVVRPPFNMLKRERNRVSTPQGLVKRFSTGLF...
         """)
     # --- CONTINUACIÓN DE LA FASE 2: ANÁLISIS DE EVOLUCIÓN ---
     st.divider()
-    st.subheader("🧬 Análisis de Deriva Antigénica (Evolución)")
+    st.subheader(" Análisis de Deriva Antigénica (Evolución)")
     st.write("""
     Al comparar la cepa **ADA60761 (2007)** con la ancestral de **1986**, 
     identificamos mutaciones clave en la Proteína de Envoltura. 
@@ -374,6 +374,7 @@ st.sidebar.info("Google Cloud for Startups Program")
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
