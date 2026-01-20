@@ -132,7 +132,7 @@ elif opcion == "Dengue & Influenza":
     st.subheader("Fase 1: Análisis de Variabilidad Genómica")
     
     # 1. SECCIÓN MAFFT (Alineamiento)
-    with st.expander(" Ver Alineamiento Representativo (MAFFT)", expanded=True):
+    with st.expander(" Ver Alineamiento Representativo (MAFFT)", expanded=False):
         st.code("""
 DENV-1  MNNQRKKTGRPSFNMLKRARNRVSTGSQLAKRFSKGLL...
 DENV-2  MNNQRKKARSTPFNMLKRERNRVSTVQQLTKRFSLGML...
@@ -140,9 +140,9 @@ DENV-3  M-NQRKKVVRPPFNMLKRERNRVSTPQGLVKRFSTGLF...
 DENV-4  M-NQRKKVVRPPFNMLKRERNRVSTPQGLVKRFSTGLF...
         * ******* ********* **** * *** *
         """, language="text")
-        st.info(" Este resumen muestra las posiciones clave donde los serotipos de Colombia divergen.")
+        st.info("Este resumen muestra las posiciones clave donde los serotipos de Colombia divergen.")
 
-    # 2. PARTE INFORMATIVA (Resultados fijos del árbol de hoy)
+    # 2. PARTE INFORMATIVA (Resultados fijos del árbol)
     st.divider()
     st.header("1. Resultados de Vigilancia Genómica")
     st.markdown("""
@@ -150,14 +150,12 @@ DENV-4  M-NQRKKVVRPPFNMLKRERNRVSTPQGLVKRFSTGLF...
     circulación de clados de alta virulencia en la región.
     """)
     
-    # Formato Newick simplificado de tu PDF
     nwk_real = "(ACW82995:0.01,ACW82996:0.01,(ACW82993:0.02,ADA60761:0.05)99:0.03)100:0.1;"
     
     col_inf, col_txt = st.columns([1.5, 1])
     
     with col_inf:
         try:
-            # Creamos el árbol en memoria
             import io
             from Bio import Phylo
             import matplotlib.pyplot as plt
@@ -178,10 +176,35 @@ DENV-4  M-NQRKKVVRPPFNMLKRERNRVSTPQGLVKRFSTGLF...
         """)
         st.info("Bootstrap: 1000 réplicas (IQ-TREE 2)")
 
-    # 3. PARTE INTERACTIVA (Carga de archivos para el usuario)
+    # 3. FASE 2: ALPHAFOLD2 (NUEVA SECCIÓN)
     st.divider()
-    st.header("2. Herramienta de Diagnóstico Interactiva")
-    st.write("Cargue sus propios datos genómicos (.treefile o .nwk) para compararlos con la base de datos nacional.")
+    st.header("2. Fase 2: Estructura 3D de la Variante Prioritaria")
+    
+    col_img, col_desc = st.columns([1.5, 1])
+    
+    with col_img:
+        # Asegúrate de que el archivo 'dengue_agresiva.png' esté en la misma carpeta que este script
+        try:
+            st.image("dengue_agresiva.png", caption="Predicción de Plegamiento AlphaFold2 - Cepa ADA60761")
+        except:
+            st.error("No se encontró la imagen 'dengue_agresiva.png'. Por favor, cárgala en la carpeta del proyecto.")
+
+    with col_desc:
+        st.markdown("""
+        **Modelo de Alta Confianza**
+        
+        Mediante **AlphaFold2**, se ha predicho la estructura de la poliproteína de la cepa colombiana. 
+        Los colores en el modelo indican la calidad del plegamiento (pLDDT):
+        - 🔵 **Azul (Muy alta):** Estructura altamente confiable.
+        - 🟡 **Amarillo/Naranja:** Zonas de alta flexibilidad.
+        
+        Esta estructura permite identificar sitios de unión de anticuerpos y posibles mecanismos de escape.
+        """)
+
+    # 4. PARTE INTERACTIVA (Carga de archivos para el usuario)
+    st.divider()
+    st.header("3. Herramienta de Diagnóstico Interactiva")
+    st.write("Cargue sus propios datos genómicos (.treefile o .nwk) para compararlos.")
     
     archivo_usuario = st.file_uploader("Subir archivo de árbol filogenético", type=['treefile', 'nwk'])
     
@@ -189,7 +212,6 @@ DENV-4  M-NQRKKVVRPPFNMLKRERNRVSTPQGLVKRFSTGLF...
         try:
             contenido = archivo_usuario.getvalue().decode("utf-8")
             tree_user = Phylo.read(io.StringIO(contenido), "newick")
-            
             st.subheader("Visualización Personalizada")
             fig_user = plt.figure(figsize=(10, 8))
             ax_user = fig_user.add_subplot(1, 1, 1)
@@ -197,8 +219,8 @@ DENV-4  M-NQRKKVVRPPFNMLKRERNRVSTPQGLVKRFSTGLF...
             st.pyplot(fig_user)
             st.balloons() 
         except Exception as e:
-            st.error(f"Error al procesar el archivo: {e}")
-
+            st.error(f"Error al procesar el archivo: {e}")    
+  
 # --- PÁGINA: SEGURIDAD HÍDRICA (NOROVIRUS) ---
 elif opcion == "Seguridad Hídrica (Norovirus)":
     st.title(" Vigilancia de Norovirus")
@@ -334,6 +356,7 @@ st.sidebar.info("Google Cloud for Startups Program")
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
