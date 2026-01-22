@@ -216,49 +216,7 @@ DENV-4  M-NQRKKVVRPPFNMLKRERNRVSTPQGLVKRFSTGLF...
     }
     st.table(data_mutaciones)  
    
-    # 3. FASE 2: ALPHAFOLD2 (NUEVA SECCIÓN)
-    st.divider()
-    st.header("2. Fase 2: Estructura 3D de la Variante Prioritaria")
     
-    col_img, col_desc = st.columns([1.5, 1])
-    
-    with col_img:
-        # Asegúrate de que el archivo 'dengue_agresiva.png' esté en la misma carpeta que este script
-        try:
-            st.image("dengue_agresiva.png", caption="Predicción de Plegamiento AlphaFold2 - Cepa ADA60761")
-        except:
-            st.error("No se encontró la imagen 'dengue_agresiva.png'. Por favor, cárgala en la carpeta del proyecto.")
-
-    with col_desc:
-        st.markdown("""
-        **Modelo de Alta Confianza**
-        
-        Mediante **AlphaFold2**, se ha predicho la estructura de la poliproteína de la cepa colombiana. 
-        Los colores en el modelo indican la calidad del plegamiento (pLDDT):
-        - 🔵 **Azul (Muy alta):** Estructura altamente confiable.
-        - 🟡 **Amarillo/Naranja:** Zonas de alta flexibilidad.
-        
-        Esta estructura permite identificar sitios de unión de anticuerpos y posibles mecanismos de escape.
-        """)
-    # --- CONTINUACIÓN DE LA FASE 2: ANÁLISIS DE EVOLUCIÓN ---
-    st.divider()
-    st.subheader(" Análisis de Deriva Antigénica (Evolución)")
-    st.write("""
-    Al comparar la cepa **ADA60761 (2007)** con la ancestral de **1986**, 
-    identificamos mutaciones clave en la Proteína de Envoltura. 
-    Este fenómeno es similar a lo ocurrido con las variantes de preocupación en COVID-19, 
-    donde el virus cambia su estructura para adaptarse mejor al huésped colombiano.
-    """)
-
-    # Tabla de ejemplo de lo que encontramos en MAFFT
-    data_mutaciones = {
-        "Posición": [126, 160, 390],
-        "Cepa 1986 (Ancestral)": ["Lys (K)", "Thr (T)", "Asn (N)"],
-        "Cepa 2007 (Agresiva)": ["Arg (R)", "Ser (S)", "Asp (D)"],
-        "Impacto Estructural": ["Estabilidad", "Glucosilación", "Carga Superficial"]
-    }
-    st.table(data_mutaciones)
-
     # 4. PARTE INTERACTIVA (Carga de archivos para el usuario)
     st.divider()
     st.header("3. Herramienta de Diagnóstico Interactiva")
@@ -414,6 +372,7 @@ st.sidebar.info("Google Cloud for Startups Program")
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
