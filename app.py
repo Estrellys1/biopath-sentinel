@@ -156,9 +156,9 @@ DENV-4  M-NQRKKVVRPPFNMLKRERNRVSTPQGLVKRFSTGLF...
     with col_inf:
         # Aquí se muestra el árbol real que obtuviste
         try:
-            st.image("ada60761-arbol.png", caption="Detalle del Árbol Filogenético: ADA60761 y clados relacionados")
+            st.image("arbol_agresiva.png", caption="Detalle del Árbol Filogenético: ADA60761 y clados relacionados")
         except:
-            st.error("⚠️ Sube el archivo 'ada60761-arbol.png' para visualizar el árbol real.")
+            st.error(" Sube el archivo 'arbol_agresiva.png' para visualizar el árbol real.")
 
     with col_txt:
         st.success("**Variante Agresiva Identificada:** ADA60761")
@@ -179,9 +179,9 @@ DENV-4  M-NQRKKVVRPPFNMLKRERNRVSTPQGLVKRFSTGLF...
     with col_img:
         # Aquí se muestra la proteína que generaste
         try:
-            st.image("dengue agresiva.png", caption="Predicción Estructural mediante IA (AlphaFold2)")
+            st.image("dengue_agresiva.png", caption="Predicción Estructural mediante IA (AlphaFold2)")
         except:
-            st.error("⚠️ Sube el archivo 'dengue agresiva.png' para visualizar la proteína.")
+            st.error(" Sube el archivo 'dengue_agresiva.png' para visualizar la proteína.")
 
     with col_desc:
         st.markdown("""
@@ -197,7 +197,7 @@ DENV-4  M-NQRKKVVRPPFNMLKRERNRVSTPQGLVKRFSTGLF...
         """)
 
     # 4. TABLA DE COMPARACIÓN FINAL
-    st.subheader("📊 Resumen de Hallazgos: ADA60761")
+    st.subheader(" Resumen de Hallazgos: ADA60761")
     data_resumen = {
         "Parámetro": ["Origen", "Tipo de Virus", "Evidencia Genómica", "Análisis Estructural"],
         "Detalle": ["Colombia", "DENV-2 Agresivo", "Rama extendida en IQ-TREE", "Modelo AlphaFold Completo"]
@@ -205,7 +205,7 @@ DENV-4  M-NQRKKVVRPPFNMLKRERNRVSTPQGLVKRFSTGLF...
     st.table(data_resumen)
  
     # --- TABLA DE MUTACIONES (NUEVA SECCIÓN REFORMADA) ---
-    st.subheader("🧬 Análisis de Deriva Antigénica")
+    st.subheader(" Análisis de Deriva Antigénica")
     
     # Datos extraídos de tu comparación en MAFFT entre la ancestral y la agresiva
     data_mutaciones = {
@@ -372,6 +372,7 @@ st.sidebar.info("Google Cloud for Startups Program")
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
