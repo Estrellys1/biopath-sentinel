@@ -142,44 +142,68 @@ DENV-4  M-NQRKKVVRPPFNMLKRERNRVSTPQGLVKRFSTGLF...
         """, language="text")
         st.info("Este resumen muestra las posiciones clave donde los serotipos de Colombia divergen.")
 
- # 2. PARTE INFORMATIVA (Resultados Reales de IQ-TREE)
+    # 2. PARTE INFORMATIVA: Vigilancia Genómica Real
     st.divider()
     st.header("1. Resultados de Vigilancia Genómica (IQ-TREE)")
     st.markdown("""
-    Análisis filogenético realizado sobre **79 secuencias colombianas**. 
-    Los resultados confirman la divergencia de la cepa **ADA60761**, la cual muestra una 
-    acumulación de cambios genéticos superior al promedio del clado DENV-2.
+    Análisis filogenético realizado sobre el set de secuencias colombianas. 
+    Los resultados identifican a la cepa **ADA60761** como una variante de interés prioritario 
+    debido a su posición en el árbol y su divergencia genética.
     """)
     
     col_inf, col_txt = st.columns([1.5, 1])
     
     with col_inf:
-        # AQUÍ CARGAS LA IMAGEN DE TU ÁRBOL (Saca una captura de la página 1 del PDF)
-        # Guárdala como 'arbol_resultados.png' en la misma carpeta que este script
+        # Aquí se muestra el árbol real que obtuviste
         try:
-            st.image("arbol_resultados.png", caption="Árbol Filogenético Máxima Verosimilitud (IQ-TREE 2)")
+            st.image("ada60761-arbol.png", caption="Detalle del Árbol Filogenético: ADA60761 y clados relacionados")
         except:
-            st.warning("📊 Cargando visualización del árbol filogenético...")
-            # Si no hay imagen, muestra el árbol simplificado que tenías antes
-            import io
-            from Bio import Phylo
-            import matplotlib.pyplot as plt
-            nwk_real = "(ACW82995:0.01,ACW82996:0.01,(ACW82993:0.02,ADA60761:0.05)99:0.03)100:0.1;"
-            tree = Phylo.read(io.StringIO(nwk_real), "newick")
-            fig = plt.figure(figsize=(10, 6))
-            ax = fig.add_subplot(1, 1, 1)
-            Phylo.draw(tree, axes=ax, do_show=False)
-            st.pyplot(fig)
+            st.error("⚠️ Sube el archivo 'ada60761-arbol.png' para visualizar el árbol real.")
 
     with col_txt:
-        st.success("**Variante Prioritaria:** ADA60761")
+        st.success("**Variante Agresiva Identificada:** ADA60761")
         st.write("""
-        **Hallazgo Clave:** Esta variante presenta la mayor distancia evolutiva (rama más larga). 
-        Esto indica una 'Deriva Antigénica' activa, permitiendo al virus evadir parcialmente 
-        la respuesta inmune previa de la población.
+        **Análisis de Datos:** En el árbol adjunto, se observa que la cepa ADA60761 presenta una de las ramas más extensas, 
+        lo que indica una acumulación significativa de mutaciones frente a los ancestros.
+        
+        **Soporte Estadístico:** El valor de **84.9/99** (SH-aLRT/Bootstrap) confirma la robustez de este clado, 
+        validando científicamente su clasificación como variante de monitoreo.
         """)
-        st.info("Soporte de Rama (Bootstrap): 100/100")
 
+    # 3. FASE 2: ESTRUCTURA PROTEICA (ALPHAFOLD)
+    st.divider()
+    st.header("2. Fase 2: Estructura 3D de la Variante ADA60761")
+    
+    col_img, col_desc = st.columns([1.5, 1])
+    
+    with col_img:
+        # Aquí se muestra la proteína que generaste
+        try:
+            st.image("dengue agresiva.png", caption="Predicción Estructural mediante IA (AlphaFold2)")
+        except:
+            st.error("⚠️ Sube el archivo 'dengue agresiva.png' para visualizar la proteína.")
+
+    with col_desc:
+        st.markdown("""
+        **Interpretación del Modelo 3D:**
+        
+        A partir de la secuencia genómica de la cepa agresiva, AlphaFold2 ha predicho su conformación:
+        
+        * 🔵 **Azul (pLDDT > 90):** Máxima confianza en la predicción.
+        * 🟡 **Amarillo/Naranja:** Regiones con alta flexibilidad estructural.
+        
+        Esta estructura permite identificar cómo las mutaciones detectadas en la Fase 1 
+        alteran la superficie del virus, facilitando potencialmente su propagación.
+        """)
+
+    # 4. TABLA DE COMPARACIÓN FINAL
+    st.subheader("📊 Resumen de Hallazgos: ADA60761")
+    data_resumen = {
+        "Parámetro": ["Origen", "Tipo de Virus", "Evidencia Genómica", "Análisis Estructural"],
+        "Detalle": ["Colombia", "DENV-2 Agresivo", "Rama extendida en IQ-TREE", "Modelo AlphaFold Completo"]
+    }
+    st.table(data_resumen)
+ 
     # --- TABLA DE MUTACIONES (NUEVA SECCIÓN REFORMADA) ---
     st.subheader("🧬 Análisis de Deriva Antigénica")
     
@@ -390,6 +414,7 @@ st.sidebar.info("Google Cloud for Startups Program")
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
