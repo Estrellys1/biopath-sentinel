@@ -113,8 +113,8 @@ model.add(Dense(1, activation='sigmoid'))
         try:
             st.image("survival_distribution.png", caption="Distribución de Supervivencia Predicha", use_container_width=True)
         except:
-            st.info("survival_distribution.png" para visualizar los resultados finales.")
-        
+            st.info("Sube el archivo 'survival_distribution.png' para visualizar los resultados finales.")
+    
         st.success(" **Hito:** El modelo captura la complejidad no lineal de la transcriptómica.")
             
 # --- PÁGINA: DENGUE & INFLUENZA ---
@@ -363,6 +363,7 @@ st.sidebar.info("Google Cloud for Startups Program")
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
