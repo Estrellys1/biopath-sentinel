@@ -111,9 +111,9 @@ model.add(Dense(1, activation='sigmoid'))
         st.write("####  Resultados de Predicción Vital")
         # Aquí cargará la otra imagen que tienes del notebook
         try:
-            st.image("Screenshot_20260123-090038.png", caption="Distribución de Supervivencia Predicha", use_container_width=True)
+            st.image("survival_distribution.png", caption="Distribución de Supervivencia Predicha", use_container_width=True)
         except:
-            st.info("'Screenshot_20260123-090038.png' para visualizar los resultados finales.")
+            st.info("'survival_distribution.png' para visualizar los resultados finales.")
         
         st.success(" **Hito:** El modelo captura la complejidad no lineal de la transcriptómica.")
             
@@ -363,6 +363,7 @@ st.sidebar.info("Google Cloud for Startups Program")
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
