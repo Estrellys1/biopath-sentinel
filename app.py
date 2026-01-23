@@ -45,10 +45,10 @@ elif opcion == "Oncología Genómica":
     # --- 1. INTRODUCCIÓN TÉCNICA ---
     st.markdown("""
     Este módulo integra datos clínicos y transcriptómicos (RNA-seq) del proyecto **The Cancer Genome Atlas (TCGA)**. 
-    A través de un pipeline de **Deep Learning**, identificamos patrones de expresión génica que definen el pronóstico clínico de pacientes con Cáncer de Mama.
+    A través de un pipeline de **Deep Learning**, identificamos patrones de expresión génica que definen el pronóstico clínico.
     """)
 
-    # --- 2. FASE DE CURACIÓN (TABLA Y ANÁLISIS) ---
+    # --- 2. FASE DE CURACIÓN ---
     st.divider()
     st.header("1. Curación y Refinamiento del Dataset")
     
@@ -56,7 +56,6 @@ elif opcion == "Oncología Genómica":
     
     with col_data:
         st.write("**Resumen de Limpieza de Datos:**")
-        # Esta tabla refleja lo que hiciste en la primera celda del notebook
         datos_limpieza = {
             "Acción": ["Eliminación de Redundancia", "Tratamiento de Nulos", "Codificación de Labels", "Escalamiento"],
             "Método": ["Drop Columns (75+)", "KNN-Imputer", "LabelEncoder", "StandardScaler"]
@@ -66,66 +65,58 @@ elif opcion == "Oncología Genómica":
     with col_info:
         st.info("**Análisis del Científico:**")
         st.write("""
-        Se eliminaron variables como `Converted_Stage` y `Vital_Status` para evitar el **Data Leakage** (fuga de datos). 
-        El uso de **KNN-Imputer** permitió recuperar muestras valiosas sin introducir sesgos estadísticos, 
-        asegurando que el modelo aprenda de la variabilidad real y no de datos faltantes.
+        Se eliminaron variables redundantes para evitar el **Data Leakage**. 
+        El uso de **KNN-Imputer** permitió recuperar muestras valiosas sin introducir sesgos, 
+        asegurando que el modelo aprenda de la variabilidad genética real.
         """)
 
-    # --- 3. ANÁLISIS DE CORRELACIÓN (GRÁFICA) ---
+    # --- 3. ANÁLISIS DE CORRELACIÓN (Aquí va tu imagen del mapa de calor) ---
     st.divider()
     st.header("2. Arquitectura de Correlación Génica")
     
     col_img, col_txt = st.columns([1.5, 1])
     
     with col_img:
+        # Aquí cargará la imagen que guardaste como correlation_heatmap.png
         try:
-            # Aquí debes tener el archivo 'correlation_heatmap.png' que sale de tu matriz de correlación
-            st.image("correlation_heatmap.png", caption="Heatmap de Correlación de Expresión", use_container_width=True)
+            st.image("correlation_heatmap.png", caption="Heatmap de Correlación de Expresión Génica", use_container_width=True)
         except:
-            st.warning(" 'correlation_heatmap.png' ().")
+            st.warning("h 'correlation_heatmap.png' a la carpeta del proyecto.")
     
     with col_txt:
         st.write("####  Interpretación del Heatmap")
         st.write("""
-        Esta matriz revela cómo grupos de genes (clústeres) interactúan entre sí. 
-        - **Zonas Rojas:** Genes que se co-expresan (oncogenes potenciales).
-        - **Zonas Azules:** Antagonismo molecular.
-        
-        **Importancia:** Identificar estas firmas es el primer paso para la medicina de precisión, permitiendo 
-        seleccionar dianas terapéuticas específicas para cada subtipo molecular de cáncer.
+        Esta matriz revela cómo grupos de genes interactúan entre sí. 
+        Las zonas de alta correlación identifican **firmas moleculares** que son críticas 
+        para clasificar el riesgo del paciente.
         """)
 
-    # --- 4. MODELADO IA (TABLAS Y MÉTRICAS) ---
+    # --- 4. MODELADO IA ---
     st.divider()
-    st.header("3. Predicción con Deep Learning")
+    st.header("3. Predicción con Deep Learning (MLP)")
     
-    tab_model, tab_eval = st.tabs(["Arquitectura del Modelo", "Análisis de Supervivencia"])
+    tab_model, tab_eval = st.tabs([" Arquitectura del Modelo", " Análisis de Resultados"])
     
     with tab_model:
-        st.write("Se implementó una **Red Neuronal Perceptrón Multicapa (MLP)** optimizada.")
+        st.write("Se implementó una **Red Neuronal Perceptrón Multicapa (MLP)**.")
         st.code("""
-# Arquitectura del modelo en el notebook:
-- Layer 1: Dense (64 neurons, ReLU)
-- Layer 2: Dropout (0.2 para evitar overfitting)
-- Layer 3: Dense (32 neurons, ReLU)
-- Output: Dense (1 neuron, Sigmoid)
-- Optimizer: Adam | Loss: Binary Crossentropy
+# Parámetros del modelo (Keras/TensorFlow):
+model.add(Dense(64, activation='relu', input_dim=X.shape[1]))
+model.add(Dropout(0.2))
+model.add(Dense(32, activation='relu'))
+model.add(Dense(1, activation='sigmoid'))
         """, language="python")
         
     with tab_eval:
-        st.write("####  Resultados de Predicción")
-        # Basado en tus gráficas de distribución de Vital Status
+        st.write("####  Resultados de Predicción Vital")
+        # Aquí cargará la otra imagen que tienes del notebook
         try:
-            st.image("survival_distribution.png", caption="Distribución de Supervivencia Global", use_container_width=True)
+            st.image("Screenshot_20260123-090038.png", caption="Distribución de Supervivencia Predicha", use_container_width=True)
         except:
-            st.info(" Distribución: El modelo muestra una alta capacidad para distinguir entre grupos de bajo y alto riesgo.")
+            st.info(" Sube 'survival_distribution.png' para visualizar los resultados finales.")
         
-        st.success(" **Hito de Tesis:** El modelo logra capturar la complejidad no lineal de la expresión génica, superando en precisión a los modelos estadísticos tradicionales de Cox.")
-
-    # --- 5. CIERRE ---
-    st.divider()
-    st.caption("Investigación soportada por BioPath-Sentinel AI - Datos procesados bajo estándares de Google Cloud.")
-
+        st.success(" **Hito:** El modelo captura la complejidad no lineal de la transcriptómica.")
+            
 # --- PÁGINA: DENGUE & INFLUENZA ---
 elif opcion == "Dengue & Influenza":
     st.title(" Vigilancia Epidemiológica: Dengue en Colombia")
@@ -372,6 +363,7 @@ st.sidebar.info("Google Cloud for Startups Program")
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
