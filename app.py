@@ -81,7 +81,7 @@ elif opcion == "Oncología Genómica":
         try:
             st.image("correlation_heatmap.png", caption="Heatmap de Correlación de Expresión Génica", use_container_width=True)
         except:
-            st.warning("correlation_heatmap.png" a la carpeta del proyecto.")
+            st.warning(" El archivo 'correlation_heatmap.png' no se encuentra en la carpeta.")"correlation_heatmap.png" a la carpeta del proyecto.")
     
     with col_txt:
         st.write("####  Interpretación del Heatmap")
@@ -363,6 +363,7 @@ st.sidebar.info("Google Cloud for Startups Program")
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
