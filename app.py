@@ -1,4 +1,4 @@
-uimport streamlit as st
+import streamlit as st
 import matplotlib.pyplot as plt
 from Bio import Phylo
 import io
@@ -363,6 +363,7 @@ st.sidebar.info("Google Cloud for Startups Program")
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
