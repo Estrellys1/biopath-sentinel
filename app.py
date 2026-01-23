@@ -79,7 +79,7 @@ elif opcion == "Oncología Genómica":
     with col_img:
         try:
             # Ahora que ya descargaste el archivo, Streamlit lo mostrará aquí
-            st.image("correlation_heatmap.png", caption="Heatmap de Correlación de Expresión", use_container_width=True)
+            st.image("correlation_heatmap.png' no.png", caption="Heatmap de Correlación de Expresión", use_container_width=True)
         except:
             st.warning(" El archivo 'correlation_heatmap.png' no se encuentra en la carpeta.")
     
@@ -363,6 +363,7 @@ st.sidebar.info("Google Cloud for Startups Program")
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
