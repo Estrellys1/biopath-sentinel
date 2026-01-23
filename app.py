@@ -70,25 +70,25 @@ elif opcion == "Oncología Genómica":
         asegurando que el modelo aprenda de la variabilidad genética real.
         """)
 
-    # --- 3. ANÁLISIS DE CORRELACIÓN (Aquí va tu imagen del mapa de calor) ---
+        # --- 3. ANÁLISIS DE CORRELACIÓN ---
     st.divider()
     st.header("2. Arquitectura de Correlación Génica")
     
     col_img, col_txt = st.columns([1.5, 1])
     
     with col_img:
-        # Aquí cargará la imagen que guardaste como correlation_heatmap.png
         try:
-            st.image("correlation_heatmap.png", caption="Heatmap de Correlación de Expresión Génica", use_container_width=True)
+            # Ahora que ya descargaste el archivo, Streamlit lo mostrará aquí
+            st.image("correlation_heatmap.png", caption="Heatmap de Correlación de Expresión", use_container_width=True)
         except:
-            st.warning(" El archivo 'correlation_heatmap.png' no se encuentra en la carpeta.")"correlation_heatmap.png" a la carpeta del proyecto.")
+            st.warning(" El archivo 'correlation_heatmap.png' no se encuentra en la carpeta.")
     
     with col_txt:
-        st.write("####  Interpretación del Heatmap")
+        st.write("#### 🌡️ Interpretación del Heatmap")
         st.write("""
         Esta matriz revela cómo grupos de genes interactúan entre sí. 
-        Las zonas de alta correlación identifican **firmas moleculares** que son críticas 
-        para clasificar el riesgo del paciente.
+        - **Zonas Rojas:** Genes que se co-expresan (oncogenes potenciales).
+        - **Zonas Azules:** Antagonismo molecular.
         """)
 
     # --- 4. MODELADO IA ---
@@ -363,6 +363,7 @@ st.sidebar.info("Google Cloud for Startups Program")
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
