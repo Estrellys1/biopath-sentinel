@@ -18,7 +18,7 @@ def leer_archivo_cancer():
 st.sidebar.title(" Panel de Investigación")
 opcion = st.sidebar.radio(
     "Seleccione una línea de estudio:",
-    ["Inicio", "Oncología Genómica", "Dengue & Influenza", "Seguridad Hídrica (Norovirus)", "Simulación Molecular"]
+    ["Inicio", "Oncología Genómica", "Dengue & Influenza", Sentinel Genome (DENV-2 Deep Dive)", # <--- AGREGA ESTO", Seguridad Hídrica (Norovirus)", "Simulación Molecular"]
 )
 
 # --- PÁGINA: INICIO ---
@@ -363,6 +363,7 @@ st.sidebar.info("Google Cloud for Startups Program")
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
