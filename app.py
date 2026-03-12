@@ -235,8 +235,8 @@ DENV-4  M-NQRKKVVRPPFNMLKRERNRVSTPQGLVKRFSTGLF...
             st.pyplot(fig_user)
             st.balloons() 
         except Exception as e:
-            st.error(f"Error al procesar el archivo: {e}")    
-
+            st.error(f"Error al procesar el archivo: {e}") 
+            
     # --- PÁGINA: SENTINEL GENOME (ANÁLISIS AVANZADO DEL PDF) ---
 elif opcion == "Sentinel Genome (DENV-2 Deep Dive)":
     st.title(" Sentinel Genome: Evolutionary Intelligence")
@@ -256,12 +256,11 @@ elif opcion == "Sentinel Genome (DENV-2 Deep Dive)":
     
     with col_tree:
         try:
-            # Aquí debes subir la imagen del árbol que generaste en el PDF (donde las ramas están en rojo)
             st.image("arbol_filogenetico_brote.png", 
                      caption="Divergencia del Brote 2024 (Marcado en Rojo) vs. Cepas Históricas", 
                      use_container_width=True)
         except:
-            st.warning(" Cargue el archivo 'arbol_filogenetico_brote.png' para visualizar el análisis evolutivo del PDF.")
+            st.warning("'arbol_filogenetico_brote.png' análisis evolutivo.")
 
     with col_txt_tree:
         st.write("####  Análisis de Clados Emergentes")
@@ -269,79 +268,54 @@ elif opcion == "Sentinel Genome (DENV-2 Deep Dive)":
         st.write("""
         - **Herramientas:** MAFFT (Alineamiento) + IQ-TREE 2.
         - **Modelo Evolutivo:** GTR+F+I+G4 (ModelFinder).
-        - **Hallazgo:** Se identificó una divergencia significativa en las secuencias con prefijos **PQ, PP y OR**, 
-          lo que confirma la presencia de una variante con alta capacidad de propagación en el territorio colombiano.
+        - **Hallazgo:** Se identificó una divergencia significativa en las secuencias con prefijos **PQ, PP y OR**.
         """)
 
-    # --- 2. RASTREO DE MUTACIONES (PARA ASTRAZENECA) ---
+    # --- 2. RASTREO DE MUTACIONES ---
     st.divider()
     st.header("2. Identificación de Mutaciones Críticas")
     
-    st.markdown("""
-    Utilizando la cepa ancestral como referencia, nuestro pipeline ha detectado las siguientes 
-    **transiciones nucleotídicas** clave que definen el perfil genético del brote 2024:
-    """)
-    
-    # Datos exactos extraídos de tu código en el PDF
     data_mut_pdf = {
         "Posición Genómica": [208, 228, 291, 312],
         "Referencia (Ancestral)": ["C", "A", "C", "C"],
         "Brote Actual (2024)": ["T", "G", "T", "T"],
-        "Tipo de Mutación": ["Transición", "Transición", "Transición", "Transición"],
         "Prioridad Estructural": ["Media", "ALTA", "Media", "Alta"]
     }
     st.table(data_mut_pdf)
+    st.success(" **Valor Estratégico:** Blancos principales para el modelado de péptidos bloqueadores.")
 
-    st.success(" **Valor Estratégico:** Estas posiciones son los blancos principales para el modelado de péptidos bloqueadores.")
+# --- PÁGINA: SEGURIDAD HÍDRICA (NOROVIRUS) ---
+elif opcion == "Seguridad Hídrica (Norovirus)":
+    st.title(" Seguridad Hídrica: Monitoreo de Norovirus")
+    st.subheader("Validación Estructural y Vigilancia en Infraestructura Crítica")
 
-    # --- 3. INTEGRACIÓN CON ALPHAFOLD & PÉPTIDOS ---
+    st.markdown("""
+    El monitoreo de Norovirus es vital para la seguridad del agua. En esta sección validamos las estructuras 
+    proteicas virales para asegurar que los modelos de simulación sean precisos.
+    """)
+
+    # --- SECCIÓN DE VALIDACIÓN (RAMACHANDRAN) ---
     st.divider()
-    col_af, col_az = st.columns(2)
-    
-    with col_af:
-        st.subheader(" Hito AlphaFold 2")
-        st.write("""
-        Estamos traduciendo estas mutaciones a nivel de aminoácidos para predecir el **cambio conformacional** en la Proteína E. El objetivo es visualizar si la mutación en la **posición 228** altera los epítopos de unión.
-        """)
-        st.button("Consultar Estado de Modelado 3D (Procesando...)")
+    st.subheader("Validación Estereoquímica: Ramachandran Plot")
 
-    with col_az:
-        st.subheader("🧪 Diseño de Péptidos")
-        st.write("""
-        **BioPath-Sentinel x AstraZeneca:** Los modelos estructurales resultantes se utilizarán para diseñar péptidos inhibidores de nueva generación 
-        específicos para las variantes que circulan hoy en Colombia.
-        """)
-        
-         # --- SECCIÓN DE VALIDACIÓN (NOROVIRUS) ---
-    st.divider()
-    st.subheader(" Validación Estereoquímica: Ramachandran Plot")
+    col_img_n, col_txt_n = st.columns([1.5, 1])
 
-    col_img, col_txt = st.columns([1.5, 1])
-
-    with col_img:
+    with col_img_n:
         try:
-            # Lógica de carga de imagen
             st.image("ramachandran_plot.png", 
-                     caption="Mapa de Ramachandran - Validación Estructural", 
+                     caption="Mapa de Ramachandran - Validación Estructural Norovirus", 
                      use_container_width=True)
         except:
-            st.warning(" Archivo 'ramachandran_plot.png' no encontrado en el repositorio.")
+            st.warning(" Archivo 'ramachandran_plot.png' no encontrado.")
     
-    with col_txt:
-        st.info("**Hito Técnico:** El siguiente hito requiere instancias **NVIDIA A100** para ejecutar Dinámica Molecular (MD).")
-        
+    with col_txt_n:
+        st.info("**Hito Técnico:** Validación para Dinámica Molecular (MD).")
         st.write("""
-        **Interpretación del Gráfico:**
+        **Resultados de Calidad:**
         - **Regiones Favorecidas:** 96.47% de los residuos.
-        - **Calidad:** Estructura validada para simulación de Dinámica Molecular.
+        - **Interpretación:** La alta densidad en zonas verdes confirma estabilidad termodinámica.
         """)
-        
-        st.write("""
-        **Análisis de Residuos:**
-        Cada punto blanco representa un residuo aminoacídico. La alta densidad en las zonas verdes 
-        confirma que la estructura secundaria (Hélices y Láminas) es termodinámicamente estable 
-        y apta para simulaciones de alta resolución en Google Cloud.
-        """)
+        st.write("**Aplicación:** Estos modelos se utilizan para predecir la persistencia del virus en plantas de tratamiento.")
 
 # --- PÁGINA: DINÁMICA MOLECULAR DE PÉPTIDOS (AMILOIDES) ---
 elif opcion == "Dinámica Molecular de Péptidos (Amiloides)":
@@ -501,6 +475,7 @@ st.sidebar.info("Google Cloud for Startups Program")
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
