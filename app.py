@@ -237,7 +237,7 @@ DENV-4  M-NQRKKVVRPPFNMLKRERNRVSTPQGLVKRFSTGLF...
 
  # --- NUEVA PÁGINA: SENTINEL GENOME (BASADA EN EL PDF) ---
 elif opcion == "Sentinel Genome (DENV-2 Deep Dive)":
-    st.title("🧬 Sentinel Genome: Evolutionary Intelligence")
+    st.title(" Sentinel Genome: Evolutionary Intelligence")
     st.subheader("Análisis Avanzado del Brote DENV-2 en Colombia (2024-2025)")
 
     st.markdown("""
@@ -252,14 +252,14 @@ elif opcion == "Sentinel Genome (DENV-2 Deep Dive)":
     col_tree, col_tree_txt = st.columns([1.5, 1])
     
     with col_tree:
-        # Aquí debes subir la imagen del árbol que generaste en el PDF (donde salen las ramas rojas)
+        # imagen del árbol
         try:
             st.image("arbol_filogenetico_brote.png", caption="Divergencia Evolutiva: Brote 2024 vs Histórico", use_container_width=True)
         except:
             st.warning(" Sube el archivo 'arbol_filogenetico_brote.png' (el del PDF) para visualizar el árbol.")
 
     with col_tree_txt:
-        st.write("#### 🌳 Análisis de Clados Emergentes")
+        st.write("####  Análisis de Clados Emergentes")
         st.write("""
         Nuestro pipeline utilizó **MAFFT** para el alineamiento e **IQ-TREE 2** con el modelo **GTR+F+I+G4**.
         
@@ -295,7 +295,7 @@ elif opcion == "Sentinel Genome (DENV-2 Deep Dive)":
     col_alpha, col_next = st.columns(2)
     
     with col_alpha:
-        st.subheader("🚀 Próximo Hito: Estructura 3D")
+        st.subheader(" Próximo Hito: Estructura 3D")
         st.write("""
         Estamos procesando la secuencia de consenso del brote 2024 en **AlphaFold2** para determinar 
         cómo los cambios de nucleótidos (C→T, A→G) alteran el plegamiento de la Proteína E.
@@ -303,7 +303,7 @@ elif opcion == "Sentinel Genome (DENV-2 Deep Dive)":
         st.button("Verificar Estado de AlphaFold (Pending)")
 
     with col_next:
-        st.subheader("🧪 Diseño de Péptidos (AstraZeneca)")
+        st.subheader(" Diseño de Péptidos")
         st.write("""
         Utilizaremos estos modelos estructurales para el diseño de péptidos que bloqueen 
         la entrada del virus a la célula, enfocándonos en las nuevas variantes detectadas.
@@ -445,6 +445,7 @@ st.sidebar.info("Google Cloud for Startups Program")
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
