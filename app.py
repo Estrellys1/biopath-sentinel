@@ -24,9 +24,11 @@ opcion = st.sidebar.radio(
         "Dengue & Influenza", 
         "Sentinel Genome (DENV-2 Deep Dive)",
         "Seguridad Hídrica (Norovirus)", 
-        "Dinámica Molecular de Péptidos (Amiloides)" # <--- Este es el nuevo nombre
+        "Dinámica Molecular de Péptidos (Amiloides)", # <-- Tu sección favorita
+        "Simulación Molecular" # <-- Mantenemos la original
     ]
 )
+
 
 # --- PÁGINA: INICIO ---
 if opcion == "Inicio":
@@ -235,86 +237,80 @@ DENV-4  M-NQRKKVVRPPFNMLKRERNRVSTPQGLVKRFSTGLF...
         except Exception as e:
             st.error(f"Error al procesar el archivo: {e}")    
 
-# --- PÁGINA: DINÁMICA MOLECULAR DE PÉPTIDOS (AMILOIDES) ---
-elif opcion == "Dinámica Molecular de Péptidos (Amiloides)":
-    st.title(" Dinámica Molecular de Estructuras Amiloides")
-    st.subheader("Simulación de L-Difenilalanina (L-FF) en Mezclas de Agua y 2-Propanol")
+    # --- PÁGINA: SENTINEL GENOME (ANÁLISIS AVANZADO DEL PDF) ---
+elif opcion == "Sentinel Genome (DENV-2 Deep Dive)":
+    st.title(" Sentinel Genome: Evolutionary Intelligence")
+    st.subheader("Módulo de Inteligencia Genómica Avanzada - Brote Colombia 2024-2025")
 
     st.markdown("""
-    **Investigación de Máster:** Estudio del proceso de autoensamblaje a nivel atómico. Los péptidos de difenilalanina son el modelo por excelencia para entender la formación de fibras amiloides, críticas tanto en enfermedades neurodegenerativas como en el diseño de nuevos bionanomateriales.
+    Este módulo especializado representa el **Deep Dive** científico de BioPath-Sentinel. 
+    A diferencia del monitoreo general, aquí procesamos **215 genomas completos** del brote actual en Colombia 
+    para identificar la deriva evolutiva del virus en tiempo real.
     """)
 
-    # --- 1. METODOLOGÍA TÉCNICA (GROMACS) ---
+    # --- 1. FILOGENIA DE ALTA RESOLUCIÓN ---
     st.divider()
-    col_tech, col_vis = st.columns([1, 1])
-
-    with col_tech:
-        st.header("1. Configuración del Sistema")
-        st.write("""
-        - **Molécula:** L-Difenilalanina (L-FF) en estado zwitteriónico.
-        - **Software:** GROMACS 2020.4.
-        - **Campo de Fuerza:** OPLS-AA (Optimized Potentials for Liquid Simulations).
-        - **Solventes:** Mezclas binarias de Agua (TIP3P) y 2-Propanol en diversas fracciones molares.
-        """)
-        st.info("Se analizaron las interacciones no covalentes y la solvatación preferencial que dicta la agregación peptídica.")
-
-    with col_vis:
-        # Sugerencia: Usa la imagen de la caja de simulación de tu tesis
+    st.header("1. Reconstrucción Filogenética (IQ-TREE 2)")
+    
+    col_tree, col_txt_tree = st.columns([1.6, 1])
+    
+    with col_tree:
         try:
-            st.image("simulacion_lff_box.png", caption="Sistema Solvatado de L-FF en GROMACS", use_container_width=True)
+            # Aquí debes subir la imagen del árbol que generaste en el PDF (donde las ramas están en rojo)
+            st.image("arbol_filogenetico_brote.png", 
+                     caption="Divergencia del Brote 2024 (Marcado en Rojo) vs. Cepas Históricas", 
+                     use_container_width=True)
         except:
-            st.warning(" Sube la captura de tu simulación como 'simulacion_lff_box.png'")
+            st.warning(" Cargue el archivo 'arbol_filogenetico_brote.png' para visualizar el análisis evolutivo del PDF.")
 
-    # --- 2. ANÁLISIS DE RESULTADOS (RDF & ESTABILIDAD) ---
+    with col_txt_tree:
+        st.write("####  Análisis de Clados Emergentes")
+        st.info("**Especificaciones Técnicas:**")
+        st.write("""
+        - **Herramientas:** MAFFT (Alineamiento) + IQ-TREE 2.
+        - **Modelo Evolutivo:** GTR+F+I+G4 (ModelFinder).
+        - **Hallazgo:** Se identificó una divergencia significativa en las secuencias con prefijos **PQ, PP y OR**, 
+          lo que confirma la presencia de una variante con alta capacidad de propagación en el territorio colombiano.
+        """)
+
+    # --- 2. RASTREO DE MUTACIONES (PARA ASTRAZENECA) ---
     st.divider()
-    st.header("2. Termodinámica y Estructura")
-    
-    st.write("Resultados obtenidos tras 50ns de simulación por sistema:")
-
-    tab_rdf, tab_hbond, tab_rg = st.tabs(["📊 Solvatación (RDF)", "🔗 Puentes de Hidrógeno", " Estabilidad (Rg)"])
-
-    with tab_rdf:
-        st.write("#### Funciones de Distribución Radial g(r)")
-        st.write("""
-        El análisis de las RDF reveló una **solvatación preferencial** del 2-propanol hacia los anillos aromáticos. 
-        Este desplazamiento del agua es el motor termodinámico que facilita la nucleación amiloide.
-        """)
-        [attachment_0](attachment)
-
-    with tab_hbond:
-        st.write("#### Dinámica de Enlaces de Hidrógeno")
-        st.write("""
-        Se cuantificó la competencia entre las interacciones péptido-péptido y péptido-solvente. 
-        Este equilibrio es lo que define si el péptido permanece soluble o forma una estructura agregada.
-        """)
-
-    with tab_rg:
-        st.write("#### Radio de Giro (Rg)")
-        st.write("""
-        La estabilidad del Radio de Giro durante la trayectoria confirma que la molécula mantiene su integridad conformacional, permitiendo interacciones de apilamiento $\pi-\pi$ (pi-stacking).
-        """)
-
-    # --- VALOR ESTRATÉGICO ---
-    st.divider()
-    st.success("""
-    **Conexión Estratégica:** Mi experiencia en la física de péptidos me permite hoy en BioPath-Sentinel diseñar péptidos inhibidores de alta afinidad y predecir la estabilidad de proteínas virales bajo diversas condiciones de microambiente químico.
-    """)
-  
-# --- PÁGINA: SEGURIDAD HÍDRICA (NOROVIRUS) ---
-elif opcion == "Seguridad Hídrica (Norovirus)":
-    st.title(" Vigilancia de Norovirus")
-    st.subheader("Estado del Proyecto: Validación Estructural y Estabilidad")
+    st.header("2. Identificación de Mutaciones Críticas")
     
     st.markdown("""
-    "Estamos analizando la estabilidad estructural de la proteína de la cápside del Norovirus Humano. 
-    Tras la predicción con **AlphaFold2**, realizamos **validación estereoquímica** mediante mapas de **Ramachandran**."
+    Utilizando la cepa ancestral como referencia, nuestro pipeline ha detectado las siguientes 
+    **transiciones nucleotídicas** clave que definen el perfil genético del brote 2024:
     """)
+    
+    # Datos exactos extraídos de tu código en el PDF
+    data_mut_pdf = {
+        "Posición Genómica": [208, 228, 291, 312],
+        "Referencia (Ancestral)": ["C", "A", "C", "C"],
+        "Brote Actual (2024)": ["T", "G", "T", "T"],
+        "Tipo de Mutación": ["Transición", "Transición", "Transición", "Transición"],
+        "Prioridad Estructural": ["Media", "ALTA", "Media", "Alta"]
+    }
+    st.table(data_mut_pdf)
 
-    col1, col2 = st.columns(2)
-    with col1:
-        st.write("1. **Modelado:** Estructura obtenida mediante AlphaFold2.")
-        st.write("2. **Validación:** Análisis de Ramachandran (96.47% favorecido).")
-        st.progress(60)
+    st.success(" **Valor Estratégico:** Estas posiciones son los blancos principales para el modelado de péptidos bloqueadores.")
+
+    # --- 3. INTEGRACIÓN CON ALPHAFOLD & PÉPTIDOS ---
+    st.divider()
+    col_af, col_az = st.columns(2)
+    
+    with col_af:
+        st.subheader(" Hito AlphaFold 2")
+        st.write("""
+        Estamos traduciendo estas mutaciones a nivel de aminoácidos para predecir el **cambio conformacional** en la Proteína E. El objetivo es visualizar si la mutación en la **posición 228** altera los epítopos de unión.
+        """)
+        st.button("Consultar Estado de Modelado 3D (Procesando...)")
+
+    with col_az:
+        st.subheader("🧪 Diseño de Péptidos")
+        st.write("""
+        **BioPath-Sentinel x AstraZeneca:** Los modelos estructurales resultantes se utilizarán para diseñar péptidos inhibidores de nueva generación 
+        específicos para las variantes que circulan hoy en Colombia.
+        """)
         
          # --- SECCIÓN DE VALIDACIÓN (NOROVIRUS) ---
     st.divider()
@@ -346,6 +342,76 @@ elif opcion == "Seguridad Hídrica (Norovirus)":
         confirma que la estructura secundaria (Hélices y Láminas) es termodinámicamente estable 
         y apta para simulaciones de alta resolución en Google Cloud.
         """)
+
+# --- PÁGINA: DINÁMICA MOLECULAR DE PÉPTIDOS (AMILOIDES) ---
+elif opcion == "Dinámica Molecular de Péptidos (Amiloides)":
+    st.title(" Dinámica Molecular de Estructuras Amiloides")
+    st.subheader("Simulación de L-Difenilalanina (L-FF) en Mezclas de Agua y 2-Propanol")
+
+    st.markdown("""
+    **Investigación de Máster:** Estudio del proceso de autoensamblaje a nivel atómico. Los péptidos de difenilalanina son el modelo por excelencia para entender la formación de fibras amiloides, críticas tanto en enfermedades neurodegenerativas como en el diseño de nuevos bionanomateriales.
+    """)
+
+    # --- 1. METODOLOGÍA TÉCNICA (GROMACS) ---
+    st.divider()
+    col_tech, col_vis = st.columns([1, 1])
+
+    with col_tech:
+        st.header("1. Configuración del Sistema")
+        st.write("""
+        - **Molécula:** L-Difenilalanina (L-FF) en estado zwitteriónico.
+        - **Software:** GROMACS 2020.4.
+        - **Campo de Fuerza:** OPLS-AA (Optimized Potentials for Liquid Simulations).
+        - **Solventes:** Mezclas binarias de Agua (TIP3P) y 2-Propanol en diversas fracciones molares.
+        """)
+        st.info("Se analizaron las interacciones no covalentes y la solvatación preferencial que dicta la agregación peptídica.")
+
+    with col_vis:
+        try:
+            # Recuerda subir una imagen de tu tesis con este nombre
+            st.image("simulacion_lff_box.png", caption="Sistema Solvatado de L-FF en GROMACS", use_container_width=True)
+        except:
+            st.warning(" Sube la captura de tu simulación como 'simulacion_lff_box.png'")
+
+    # --- 2. ANÁLISIS DE RESULTADOS (RDF & ESTABILIDAD) ---
+    st.divider()
+    st.header("2. Termodinámica y Estructura")
+    
+    st.write("Resultados obtenidos tras 50ns de simulación por sistema:")
+
+    tab_rdf, tab_hbond, tab_rg = st.tabs(["📊 Solvatación (RDF)", "🔗 Puentes de Hidrógeno", " Estabilidad (Rg)"])
+
+    with tab_rdf:
+        st.write("#### Funciones de Distribución Radial g(r)")
+        st.write("""
+        El análisis de las RDF reveló una **solvatación preferencial** del 2-propanol hacia los anillos aromáticos. 
+        Este desplazamiento del agua es el motor termodinámico que facilita la nucleación amiloide.
+        """)
+        # Aquí puedes mostrar una gráfica de RDF de tu tesis
+        try:
+            st.image("grafica_rdf_tesis.png", caption="Análisis g(r) - Solvatación Preferencial")
+        except:
+            st.write("(Gráfica de RDF pendiente de carga)")
+
+    with tab_hbond:
+        st.write("#### Dinámica de Enlaces de Hidrógeno")
+        st.write("""
+        Se cuantificó la competencia entre las interacciones péptido-péptido y péptido-solvente. 
+        Este equilibrio es lo que define si el péptido permanece soluble o forma una estructura agregada.
+        """)
+
+    with tab_rg:
+        st.write("#### Radio de Giro (Rg)")
+        st.write("""
+        La estabilidad del Radio de Giro durante la trayectoria confirma que la molécula mantiene su integridad conformacional, permitiendo interacciones de apilamiento $\pi-\pi$ (pi-stacking).
+        """)
+
+    # --- VALOR ESTRATÉGICO ---
+    st.divider()
+    st.success("""
+    **Conexión Estratégica:** Mi experiencia en la física de péptidos me permite hoy en BioPath-Sentinel diseñar péptidos inhibidores de alta afinidad y predecir la estabilidad de proteínas virales bajo diversas condiciones de microambiente químico.
+    """)
+
                      
 # --- PÁGINA: SIMULACIÓN MOLECULAR ---
 elif opcion == "Simulación Molecular":
@@ -435,6 +501,7 @@ st.sidebar.info("Google Cloud for Startups Program")
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
