@@ -256,7 +256,7 @@ elif opcion == "Sentinel Genome (DENV-2 Deep Dive)":
         try:
             st.image("arbol_filogenetico_brote.png", caption="Divergencia Evolutiva: Brote 2024 vs Histórico", use_container_width=True)
         except:
-            st.warning(" Sube el archivo 'arbol_filogenetico_brote.png' (el del PDF) para visualizar el árbol.")
+            st.warning(" archivo 'arbol_filogenetico_brote.png' (el del PDF) para visualizar el árbol.")
 
     with col_tree_txt:
         st.write("####  Análisis de Clados Emergentes")
@@ -445,6 +445,7 @@ st.sidebar.info("Google Cloud for Startups Program")
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
