@@ -227,6 +227,81 @@ DENV-4  M-NQRKKVVRPPFNMLKRERNRVSTPQGLVKRFSTGLF...
             st.balloons() 
         except Exception as e:
             st.error(f"Error al procesar el archivo: {e}")    
+
+ # --- NUEVA PÁGINA: SENTINEL GENOME (BASADA EN EL PDF) ---
+elif opcion == "Sentinel Genome (DENV-2 Deep Dive)":
+    st.title("🧬 Sentinel Genome: Evolutionary Intelligence")
+    st.subheader("Análisis Avanzado del Brote DENV-2 en Colombia (2024-2025)")
+
+    st.markdown("""
+    Este módulo presenta resultados de **inteligencia genómica avanzada**. A diferencia del monitoreo general, 
+    aquí decodificamos la evolución del virus en tiempo real mediante el procesamiento de **215 genomas completos** identificados en el brote actual.
+    """)
+
+    # --- 1. FILOGENIA AVANZADA ---
+    st.divider()
+    st.header("1. Reconstrucción Filogenética de Alta Resolución")
+    
+    col_tree, col_tree_txt = st.columns([1.5, 1])
+    
+    with col_tree:
+        # Aquí debes subir la imagen del árbol que generaste en el PDF (donde salen las ramas rojas)
+        try:
+            st.image("arbol_filogenetico_brote.png", caption="Divergencia Evolutiva: Brote 2024 vs Histórico", use_container_width=True)
+        except:
+            st.warning(" Sube el archivo 'arbol_filogenetico_brote.png' (el del PDF) para visualizar el árbol.")
+
+    with col_tree_txt:
+        st.write("#### 🌳 Análisis de Clados Emergentes")
+        st.write("""
+        Nuestro pipeline utilizó **MAFFT** para el alineamiento e **IQ-TREE 2** con el modelo **GTR+F+I+G4**.
+        
+        **Hallazgo:** Las secuencias identificadas con los prefijos **PQ, PP y OR** (marcadas en rojo en el gráfico) 
+        muestran una clara divergencia de las cepas históricas colombianas, indicando una evolución acelerada 
+        en el brote actual.
+        """)
+
+    # --- 2. RASTREO DE MUTACIONES (LO QUE PIDE ASTRAZENECA) ---
+    st.divider()
+    st.header("2. Identificación de Mutaciones Críticas")
+    
+    st.write("Comparativa de deriva nucleotídica: Cepa Ancestral vs. Brote 2024 (Basado en el análisis del PDF).")
+    
+    # Datos exactos de tu PDF (posiciones 208, 228, 291, 312)
+    data_pdf = {
+        "Posición Genómica": [208, 228, 291, 312],
+        "Nucleótido Referencia": ["C", "A", "C", "C"],
+        "Variante Brote 2024": ["T", "G", "T", "T"],
+        "Tipo de Cambio": ["Transición", "Transición", "Transición", "Transición"],
+        "Impacto Estructural": ["Evaluando...", "Alta Probabilidad", "Evaluando...", "Modificación de Superficie"]
+    }
+    st.table(data_pdf)
+
+    st.info("""
+    **Nota Técnica:** Estas mutaciones han sido seleccionadas como objetivos prioritarios para el modelado en 
+    **AlphaFold2**, ya que se encuentran en regiones de alta variabilidad que podrían comprometer la eficacia de 
+    anticuerpos actuales.
+    """)
+
+    # --- 3. PRÓXIMO HITO: ALPHAFOLD & PÉPTIDOS ---
+    st.divider()
+    col_alpha, col_next = st.columns(2)
+    
+    with col_alpha:
+        st.subheader("🚀 Próximo Hito: Estructura 3D")
+        st.write("""
+        Estamos procesando la secuencia de consenso del brote 2024 en **AlphaFold2** para determinar 
+        cómo los cambios de nucleótidos (C→T, A→G) alteran el plegamiento de la Proteína E.
+        """)
+        st.button("Verificar Estado de AlphaFold (Pending)")
+
+    with col_next:
+        st.subheader("🧪 Diseño de Péptidos (AstraZeneca)")
+        st.write("""
+        Utilizaremos estos modelos estructurales para el diseño de péptidos que bloqueen 
+        la entrada del virus a la célula, enfocándonos en las nuevas variantes detectadas.
+        """)
+
   
 # --- PÁGINA: SEGURIDAD HÍDRICA (NOROVIRUS) ---
 elif opcion == "Seguridad Hídrica (Norovirus)":
@@ -363,6 +438,7 @@ st.sidebar.info("Google Cloud for Startups Program")
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
