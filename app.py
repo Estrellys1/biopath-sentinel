@@ -345,7 +345,7 @@ elif opcion == "Dinámica Molecular de Péptidos (Amiloides)":
             # Recuerda subir una imagen de tu tesis con este nombre
             st.image("simulacion_lff_box.png", caption="Sistema Solvatado de L-FF en GROMACS", use_container_width=True)
         except:
-            st.warning(" Sube la captura de tu simulación como 'simulacion_lff_box.png'")
+            st.warning(" s 'simulacion_lff_box.png'")
 
     # --- 2. ANÁLISIS DE RESULTADOS (RDF & ESTABILIDAD) ---
     st.divider()
@@ -353,7 +353,7 @@ elif opcion == "Dinámica Molecular de Péptidos (Amiloides)":
     
     st.write("Resultados obtenidos tras 50ns de simulación por sistema:")
 
-    tab_rdf, tab_hbond, tab_rg = st.tabs(["📊 Solvatación (RDF)", "🔗 Puentes de Hidrógeno", " Estabilidad (Rg)"])
+    tab_rdf, tab_hbond, tab_rg = st.tabs([" Solvatación (RDF)", " Puentes de Hidrógeno", " Estabilidad (Rg)"])
 
     with tab_rdf:
         st.write("#### Funciones de Distribución Radial g(r)")
@@ -385,8 +385,7 @@ elif opcion == "Dinámica Molecular de Péptidos (Amiloides)":
     st.success("""
     **Conexión Estratégica:** Mi experiencia en la física de péptidos me permite hoy en BioPath-Sentinel diseñar péptidos inhibidores de alta afinidad y predecir la estabilidad de proteínas virales bajo diversas condiciones de microambiente químico.
     """)
-
-                     
+           
 # --- PÁGINA: SIMULACIÓN MOLECULAR ---
 elif opcion == "Simulación Molecular":
     st.title(" Dinámica Molecular y Bioinformática")
@@ -475,6 +474,7 @@ st.sidebar.info("Google Cloud for Startups Program")
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
+
 
 
 
