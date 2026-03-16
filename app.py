@@ -437,7 +437,8 @@ elif opcion == "Péptidos Monocíclicos":
             st.warning(" Archivo 'geometria_3d_peptido.png' no encontrado.")
     
     with col_txt_p:
-        [span_5](start_span)st.info("**Hito Técnico:** Generación exitosa de 996 estructuras 3D[span_5](end_span).")
+            st.info("**Hito Técnico:** Generación exitosa de 996 estructuras 3D.")
+        
         st.write("""
         **Métricas Clave Calculadas:**
         - **[span_6](start_span)Asfericidad:** Mide qué tan "redonda" es la molécula[span_6](end_span).
