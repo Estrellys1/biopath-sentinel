@@ -494,14 +494,26 @@ elif opcion == "Péptidos Monocíclicos":
         Este perfil geométrico es el que AstraZeneca busca para superar las limitaciones de la Regla de 5 en macrociclos.
         """)
         
-        # Botón de descarga para AstraZeneca
+            # --- SECCIÓN DE DESCARGA Y CIERRE ---
+    st.divider()
+    
+    # Verificamos si la variable existe antes de usarla
+    if 'df_final' in locals():
+        st.subheader("📥 Exportar Resultados")
         csv_data = df_final.to_csv(index=False).encode('utf-8')
         st.download_button(
-            label="📥 Descargar Reporte Completo (CSV)",
+            label="Descargar Reporte BioPath para AstraZeneca",
             data=csv_data,
-            file_name='BioPath_Full_Report.csv',
+            file_name='BioPath_Final_Report.csv',
             mime='text/csv',
-            )
+        )
+        st.success("Análisis completado. Los datos están listos para exportación.")
+    else:
+        st.error("No se pudo generar el reporte porque el archivo de datos no fue encontrado.")
+        st.info("Asegúrate de que 'BioPath_Final_Predictions_Report.csv' esté en la carpeta raíz de tu GitHub.")
+
+
+# --- SECCIÓN INFERIOR GENERAL
 
 
 # --- SECCIÓN INFERIOR GENERAL (VISIBLE EN TODAS LAS PÁGINAS) ---
