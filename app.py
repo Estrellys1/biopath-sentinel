@@ -491,7 +491,7 @@ elif opcion == "Péptidos Monocíclicos":
         st.write("""
         Los péptidos con veredicto de **Éxito** presentan una combinación única de baja **Asfericidad** (alta compactación) y una **TPSA_3D** optimizada. 
         
-        Este perfil geométrico es el que AstraZeneca busca para superar las limitaciones de la Regla de 5 en macrociclos.
+        Este perfil geométrico es el que las farmaceuticas busca para superar las limitaciones de la Regla de 5 en macrociclos.
         """)
         
             # --- SECCIÓN DE DESCARGA Y CIERRE ---
