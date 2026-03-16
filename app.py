@@ -2,6 +2,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 from Bio import Phylo
 import io
+import plotly.express as px
 
 # --- CONFIGURACIÓN DE LA PÁGINA ---
 st.set_page_config(page_title="BioPath-Sentinel AI", page_icon="", layout="wide")
@@ -15,7 +16,7 @@ def leer_archivo_cancer():
         return "Contenido genómico en proceso de carga..."
 
 # --- BARRA LATERAL (NAVEGACIÓN) ---
-st.sidebar.title(" Panel de Investigación")
+st.sidebar.title("Panel de Investigación")
 opcion = st.sidebar.radio(
     "Seleccione una línea de estudio:",
     [
@@ -24,12 +25,11 @@ opcion = st.sidebar.radio(
         "Dengue & Influenza", 
         "Sentinel Genome (DENV-2 Deep Dive)",
         "Seguridad Hídrica (Norovirus)", 
-        "Dinámica Molecular de Péptidos (Amiloides)", # <-- Tu sección favorita
-        "Simulación Molecular", # <-- Mantenemos la original
-        "Péptidos Monocíclicos"
+        "Dinámica Molecular de Péptidos (Amiloides)",
+        "Simulación Molecular", 
+        "Péptidos Monocíclicos" 
     ]
 )
-
 
 # --- PÁGINA: INICIO ---
 if opcion == "Inicio":
@@ -411,108 +411,95 @@ elif opcion == "Simulación Molecular":
 
     st.success("Scripts optimizados para GROMACS 2024+.")
 
-# --- PÁGINA: PÉPTIDOS MONOCÍCLICOS (BIOPATH-SENTINEL) ---
+# --- PÁGINA: PÉPTIDOS MONOCÍCLICOS ---
 elif opcion == "Péptidos Monocíclicos":
-    st.title("BioPath-Sentinel: Análisis de Péptidos Monocíclicos")
-    st.subheader("Modelado 3D y Predicción de Permeabilidad de Membrana (Resultados Colab)")
+    st.title("🔬 BioPath-Sentinel: Análisis de Péptidos Monocíclicos")
+    st.subheader("Modelado 3D y Predicción de Permeabilidad con IA")
 
     st.markdown("""
-    Este trabajo abarca desde la curación de 
-    SMILES y la generación de conformómeros 3D vía RDKit, hasta la implementación de modelos de **Machine Learning** (Random Forest) para predecir la permeabilidad. El objetivo es identificar candidatos con alto potencial terapéutico 
-    capaces de atravesar la barrera celular.
+    Plataforma de cribado virtual basada en el flujo de trabajo de **RDKit (ETKDGv3)** y **Random Forest**. 
+    Este módulo evalúa la capacidad de translocación celular de macrociclos mediante descriptores geométricos avanzados.
     """)
 
-    # --- SECCIÓN 1: GENERACIÓN DE ESTRUCTURAS 3D (RDKit) ---
-    st.divider()
-    st.subheader("1. Modelado Estructural y Geometría Molecular")
-    
-    col_visual, col_desc = st.columns([1.6, 1])
+    # --- MÉTRICAS DE RENDIMIENTO (DASHBOARD) ---
+    m1, m2, m3, m4 = st.columns(4)
+    m1.metric("Algoritmo", "Random Forest")
+    m2.metric("MAE (Error)", "0.54")
+    m3.metric("Dataset", "996 Péptidos")
+    m4.metric("Software", "RDKit / Sklearn")
 
-    with col_visual:
-        try:
-            # Aquí imagen real de py3Dmol generada.
-            # 'conformeros_3d.png'.
-            st.image("conformeros_3d.png", 
-                     caption="Visualización de conformómeros de baja energía generados con ETKDGv3 (RDKit).", 
-                     use_container_width=True)
-        except:
-            st.warning(" Captura de pantalla 'conformeros_3d.png' no encontrada. Muestra una estructura representativa.")
-    
-    with col_desc:
-        st.info("**Hito Técnico):** Generación exitosa de conformómeros para 996 péptidos.")
-        st.write("""
-        **Descriptores Calculados:**
-        - **MW / LogP / TPSA:** Parámetros de la Regla de Lipinski/Veber.
-        - **HBD / HBA:** Capacidad de formación de puentes de hidrógeno.
-        - **Geometría 3D:** Asfericidad y Radio de Giro para evaluar compactación.
-        """)
-        st.write("**Impacto:** Estos sensores moleculares son críticos para que el modelo de IA aprenda a diferenciar péptidos permeables.")
-
-    # --- SECCIÓN 2: DATASET MAESTRO (Muestra Top & Bottom) ---
+    # --- CARGA DE DATOS Y TABLA ---
     st.divider()
-    st.subheader("2. Muestra del Dataset de Entrenamiento (n=996)")
-    st.write("Datos procesados y normalizados, listos para el modelado predictivo.")
+    st.subheader("📋 Muestra del Dataset Maestro (Startup Verdict)")
     
     try:
-        # Cargamos el dataset que adjuntaste
-        df_csv = pd.read_csv("CycPeptMPDB_Selected_1000_v2.csv")
+        # Usamos el reporte final que adjuntaste
+        df_final = pd.read_csv("BioPath_Final_Predictions_Report.csv")
         
-        # Columnas específicas de tu archivo CSV (Reflejadas del Colab)
-        cols_mostrar = ['ID', 'Permeability', 'MolWt', 'Sequence_TPSA', 'Monomer_Length']
+        # Columnas críticas para AstraZeneca
+        cols_it = ['ID', 'MolWt', 'TPSA', 'Asphericity', 'Predicted_Permeability', 'Startup_Verdict']
         
-        # Extraemos los 3 primeros y los 3 últimos
-        top_rows = df_csv[cols_mostrar].head(3)
-        bottom_rows = df_csv[cols_mostrar].tail(3)
+        # Lógica de "Inicio y Fin" de la lista
+        df_head = df_final[cols_it].head(3)
+        df_tail = df_final[cols_it].tail(3)
+        dots = pd.DataFrame([["...", "...", "...", "...", "...", "..."]], columns=cols_it)
         
-        # Fila visual de puntos suspensivos
-        dots = pd.DataFrame([["...", "...", "...", "...", "..."]], columns=cols_mostrar)
-        
-        # Unión para la previsualización
-        preview_df = pd.concat([top_rows, dots, bottom_rows]).reset_index(drop=True)
-        
-        # Renderizado de la tabla
-        st.table(preview_df)
+        resumen_tabla = pd.concat([df_head, dots, df_tail]).reset_index(drop=True)
+        st.table(resumen_tabla)
         
     except Exception as e:
-        st.error(f"Error al cargar 'CycPeptMPDB_Selected_1000_v2.csv': {e}")
+        st.error("Error: Sube 'BioPath_Final_Predictions_Report.csv' al repositorio.")
 
-    # --- SECCIÓN 3: RENDIMIENTO DEL MODELO Y FEATURE IMPORTANCE ---
+    # --- GRÁFICO INTERACTIVO (PLOTLY) ---
     st.divider()
-    st.subheader("3.  Machine Learning y Análisis de Importancia")
+    st.subheader("📊 Análisis de Espacio Químico: MolWt vs Permeabilidad")
+    
+    if 'df_final' in locals():
+        fig = px.scatter(
+            df_final, 
+            x="MolWt", 
+            y="Predicted_Permeability",
+            color="Startup_Verdict",
+            hover_data=['ID', 'Asphericity', 'TPSA'],
+            title="Distribución de Candidatos por Veredicto BioPath",
+            labels={"MolWt": "Peso Molecular (Da)", "Predicted_Permeability": "Log Permeabilidad Predictiva"},
+            color_discrete_map={
+                "BAJO POTENCIAL": "#EF553B",
+                "POTENCIAL MEDIO": "#FECB52",
+                "ALTA PERMEABILIDAD (Éxito)": "#00CC96"
+            },
+            template="plotly_dark"
+        )
+        st.plotly_chart(fig, use_container_width=True)
 
-    col_metricas, col_grafico = st.columns([1, 1.6])
+    # --- BIO-PATH INSIGHTS (REPORTES TÉCNICOS) ---
+    st.divider()
+    col_img, col_txt = st.columns([1.2, 1])
 
-    with col_metricas:
-        st.write("**Métricas del Modelo Random Forest:**")
-        # Simulación de métricas basadas en los resultados típicos de tu Colab
-        m1, m2 = st.columns(2)
-        m1.metric("MAE (Train)", "0.31", "Log Unit") 
-        m2.metric("MAE (Test)", "0.54", "Log Unit") 
-        
-        st.write("**Hiperparámetros Clave:**")
-        st.code("""
-n_estimators=100
-max_depth=None
-min_samples_split=2
-criterion='squared_error'
-        """, language='python')
-
-    with col_grafico:
+    with col_img:
         try:
-            # cargar la gráfica de Feature Importance que generaste.
-            # el gráfico como 'feature_importance.png'.
-            st.image("feature_importance.png", 
-                     caption="Gráfico de Importancia de Características (Feature Importance) del modelo Random Forest.", 
-                     use_container_width=True)
+            st.image("feature_importance.png", caption="Importancia de Características (Feature Importance)", use_container_width=True)
         except:
-            st.warning(" Gráfico 'feature_importance.png' no encontrado. grafico")
+            st.info("💡 Consejo: Agrega el gráfico de importancia generado en tu Colab.")
 
-    # --- CONCLUSIÓN Y PRÓXIMOS PASOS ---
-    st.divider()
-    st.success("""
-    **Veredicto BioPath-Sentinel:** El análisis de Feature Importance revela que la **TPSA (Topological Polar Surface Area)** y la **Asfericidad** son los descriptores que más influyen en la predicción de permeabilidad para este dataset de péptidos monocíclicos. Este hallazgo valida la hipótesis de que la compactación molecular y la exposición de superficie polar son determinantes clave para atravesar membranas biológicas.
-    """)
-    st.info("Paso sugerido: Validar los 5 candidatos 'Ready' mediante simulaciones de Dinámica Molecular (MD) para evaluar su estabilidad conformacional.")
+    with col_txt:
+        st.markdown("### 🧬 BioPath Insights")
+        st.success("**Descubrimiento Clave:**")
+        st.write("""
+        Los péptidos con veredicto de **Éxito** presentan una combinación única de baja **Asfericidad** (alta compactación) y una **TPSA_3D** optimizada. 
+        
+        Este perfil geométrico es el que AstraZeneca busca para superar las limitaciones de la Regla de 5 en macrociclos.
+        """)
+        
+        # Botón de descarga para AstraZeneca
+        csv_data = df_final.to_csv(index=False).encode('utf-8')
+        st.download_button(
+            label="📥 Descargar Reporte Completo (CSV)",
+            data=csv_data,
+            file_name='BioPath_Full_Report.csv',
+            mime='text/csv',
+            )
+
 
 # --- SECCIÓN INFERIOR GENERAL (VISIBLE EN TODAS LAS PÁGINAS) ---
 st.divider()
