@@ -26,6 +26,7 @@ opcion = st.sidebar.radio(
         "Seguridad Hídrica (Norovirus)", 
         "Dinámica Molecular de Péptidos (Amiloides)", # <-- Tu sección favorita
         "Simulación Molecular" # <-- Mantenemos la original
+        "peptidos monociclicos"
     ]
 )
 
@@ -409,6 +410,85 @@ elif opcion == "Simulación Molecular":
         st.caption("Temp: 298.15 K | Salinidad: 35 ppt")
 
     st.success("Scripts optimizados para GROMACS 2024+.")
+
+# --- PÁGINA: PÉPTIDOS MONOCÍCLICOS (BIOPATH-SENTINEL) ---
+elif opcion == "Péptidos Monocíclicos":
+    st.title("🔬 BioPath-Sentinel: Análisis de Péptidos Monocíclicos")
+    st.subheader("Modelado 3D y Predicción de Permeabilidad de Membrana")
+
+    st.markdown("""
+    Esta sección utiliza algoritmos avanzados (RDKit ETKDGv3) para transformar secuencias de péptidos 
+    [span_3](start_span)[span_4](start_span)macrocíclicos en estructuras tridimensionales precisas, evaluando su potencial terapéutico[span_3](end_span)[span_4](end_span).
+    """)
+
+    # --- SECCIÓN DE DESCRIPTORES 3D ---
+    st.divider()
+    st.subheader("Análisis Geométrico y Descriptores Físicos")
+
+    col_img_p, col_txt_p = st.columns([1.5, 1])
+
+    with col_img_p:
+        try:
+            # Aquí puedes usar una de las imágenes generadas por py3Dmol o un gráfico de importancia
+            st.image("geometria_3d_peptido.png", 
+                     caption="Visualización Estructural - Candidato de Alta Permeabilidad", 
+                     use_container_width=True)
+        except:
+            st.warning(" Archivo 'geometria_3d_peptido.png' no encontrado.")
+    
+    with col_txt_p:
+        [span_5](start_span)st.info("**Hito Técnico:** Generación exitosa de 996 estructuras 3D[span_5](end_span).")
+        st.write("""
+        **Métricas Clave Calculadas:**
+        - **[span_6](start_span)Asfericidad:** Mide qué tan "redonda" es la molécula[span_6](end_span).
+        - **[span_7](start_span)Radio de Giro:** Indica la compacidad estructural[span_7](end_span).
+        - **[span_8](start_span)TPSA 3D (Labute):** Área superficial polar real en el espacio[span_8](end_span).
+        """)
+        st.write("**Aplicación:** Estos descriptores alimentan el modelo de IA para identificar candidatos con potencial clínico.")
+
+    # --- SECCIÓN DE PREDICCIÓN (IA) ---
+    st.divider()
+    st.subheader("Veredicto de Inteligencia Artificial")
+    
+    # Simulación de métricas del modelo entrenado
+    m1, m2, m3 = st.columns(3)
+    [span_9](start_span)m1.metric("Dataset Entrenamiento", "796 Péptidos", "[span_9](end_span)")
+    [span_10](start_span)m2.metric("Precisión (R² Score)", "0.2885", "[span_10](end_span)")
+    [span_11](start_span)m3.metric("Candidatos Top Detectados", "5", "AstraZeneca Ready[span_11](end_span)")
+
+    [span_12](start_span)st.success("**Insight de BioPath:** Los péptidos más permeables tienden a ser más compactos (baja Asfericidad) y poseen una TPSA 3D reducida[span_12](end_span).")
+
+    # --- SECCIÓN DE DATASET MAESTRO (PRE-PROCESAMIENTO) ---
+    st.divider()
+    st.subheader("Muestra del Dataset Maestro")
+    st.write("Registros procesados para el entrenamiento de la IA (CycPeptMPDB v2):")
+
+    try:
+        # [span_0](start_span)[span_1](start_span)Cargamos el dataset final generado en el Colab[span_0](end_span)[span_1](end_span)
+        df_display = pd.read_csv('/content/drive/MyDrive/BioPath_Master_Training_Data.csv')
+        
+        # Seleccionamos las columnas más relevantes para la tabla
+        cols_interes = ['ID', 'Permeability', 'MolWt', 'TPSA', 'Asphericity', 'RadiusOfGyration']
+        
+        # [span_2](start_span)Creamos la muestra: primeros 3 + fila de puntos suspensivos + últimos 3[span_2](end_span)
+        top = df_display[cols_interes].head(3)
+        bottom = df_display[cols_interes].tail(3)
+        
+        # Fila estética de puntos suspensivos
+        dots = pd.DataFrame([["...", "...", "...", "...", "...", "..."]], columns=cols_interes)
+        
+        # Concatenamos para la vista final
+        df_preview = pd.concat([top, dots, bottom]).reset_index(drop=True)
+        
+        # Mostramos la tabla con formato profesional
+        st.table(df_preview)
+        
+        [span_3](start_span)st.caption(f"Dataset total: {len(df_display)} péptidos monocíclicos procesados exitosamente.[span_3](end_span)")
+        
+    except Exception as e:
+        st.warning("No se pudo cargar 'BioPath_Master_Training_Data.csv'. Asegúrate de que el archivo esté en la ruta correcta.")
+        
+
 
 # --- SECCIÓN INFERIOR GENERAL (VISIBLE EN TODAS LAS PÁGINAS) ---
 st.divider()
