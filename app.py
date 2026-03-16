@@ -436,16 +436,18 @@ elif opcion == "Péptidos Monocíclicos":
         except:
             st.warning(" Archivo 'geometria_3d_peptido.png' no encontrado.")
     
-        with col_txt_p:
-        st.info("**Hito Técnico:** Generación exitosa de 996 estructuras 3D.")
-        st.write("""
-        **Métricas Clave Calculadas:**
-        - **Asfericidad:** Mide qué tan "redonda" es la molécula.
-        - **Radio de Giro:** Indica la compacidad estructural.
-        - **TPSA 3D (Labute):** Área superficial polar real en el espacio.
-        """)
-        st.write("**Aplicación:** Estos descriptores alimentan el modelo de IA para identificar candidatos con potencial clínico.")   
-
+     with col_txt_p:
+         st.info("**Hito Técnico:** Generación exitosa de 996 estructuras 3D.")
+        
+         st.write("""
+         **Métricas Clave Calculadas:**
+         - **Asfericidad:** Mide qué tan "redonda" es la molécula.
+         - **Radio de Giro:** Indica la compacidad estructural.
+         - **TPSA 3D (Labute):** Área superficial polar real en el espacio.
+         """)
+         st.write("**Aplicación:** Estos descriptores alimentan el modelo de IA para identificar candidatos con potencial clínico.")
+      
+    
     # --- SECCIÓN DE PREDICCIÓN (IA) ---
     st.divider()
     st.subheader("Veredicto de Inteligencia Artificial")
