@@ -1,4 +1,4 @@
-noimport streamlit as st
+import streamlit as st
 import matplotlib.pyplot as plt
 from Bio import Phylo
 import io
