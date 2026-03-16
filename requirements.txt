@@ -1,6 +1,6 @@
 streamlit
 pandas
 plotly
-rdkit-pypi
-matplotlib
+rdkit
 biopython
+matplotlib
