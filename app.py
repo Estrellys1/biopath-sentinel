@@ -25,7 +25,7 @@ opcion = st.sidebar.radio(
         "Sentinel Genome (DENV-2 Deep Dive)",
         "Seguridad Hídrica (Norovirus)", 
         "Dinámica Molecular de Péptidos (Amiloides)", # <-- Tu sección favorita
-        "Simulación Molecular" # <-- Mantenemos la original
+        "Simulación Molecular", # <-- Mantenemos la original
         "peptidos monociclicos"
     ]
 )
