@@ -458,6 +458,48 @@ elif opcion == "Péptidos Monocíclicos":
 
     [span_12](start_span)st.success("**Insight de BioPath:** Los péptidos más permeables tienden a ser más compactos (baja Asfericidad) y poseen una TPSA 3D reducida[span_12](end_span).")
 
+    # --- SECCIÓN DE DATASET MAESTRO (PRE-PROCESAMIENTO) ---
+    st.divider()
+    st.subheader("Muestra del Dataset Maestro")
+    st.write("Registros procesados para el entrenamiento de la IA (CycPeptMPDB v2):")
+
+    try:
+        # [span_0](start_span)[span_1](start_span)Cargamos el dataset final generado en el Colab[span_0](end_span)[span_1](end_span)
+        df_display = pd.read_csv('/content/drive/MyDrive/BioPath_Master_Training_Data.csv')
+        
+        # Seleccionamos las columnas más relevantes para la tabla
+        cols_interes = ['ID', 'Permeability', 'MolWt', 'TPSA', 'Asphericity', 'RadiusOfGyration']
+        
+        # [span_2](start_span)Creamos la muestra: primeros 3 + fila de puntos suspensivos + últimos 3[span_2](end_span)
+        top = df_display[cols_interes].head(3)
+        bottom = df_display[cols_interes].tail(3)
+        
+        # Fila estética de puntos suspensivos
+        dots = pd.DataFrame([["...", "...", "...", "...", "...", "..."]], columns=cols_interes)
+        
+        # Concatenamos para la vista final
+        df_preview = pd.concat([top, dots, bottom]).reset_index(drop=True)
+        
+        # Mostramos la tabla con formato profesional
+        st.table(df_preview)
+        
+        [span_3](start_span)st.caption(f"Dataset total: {len(df_display)} péptidos monocíclicos procesados exitosamente.[span_3](end_span)")
+        
+    except Exception as e:
+        st.warning("No se pudo cargar 'BioPath_Master_Training_Data.csv'. Asegúrate de que el archivo esté en la ruta correcta.")
+
+    with col_txt_p:
+        # Línea corregida sin etiquetas de formato externas
+        st.info("**Hito Técnico:** Generación exitosa de 996 estructuras 3D.") 
+        
+        st.write("""
+        **Métricas Clave Calculadas:**
+        - **Asfericidad:** Mide qué tan "redonda" es la molécula.
+        - **Radio de Giro:** Indica la compacidad estructural.
+        - **TPSA 3D (Labute):** Área superficial polar real en el espacio.
+        """)
+        st.write("**Aplicación:** Estos descriptores alimentan el modelo de IA para identificar candidatos con potencial clínico.")
+
 
 # --- SECCIÓN INFERIOR GENERAL (VISIBLE EN TODAS LAS PÁGINAS) ---
 st.divider()
