@@ -413,33 +413,33 @@ elif opcion == "Simulación Molecular":
 
 # --- PÁGINA: PÉPTIDOS MONOCÍCLICOS (BIOPATH-SENTINEL) ---
 elif opcion == "Péptidos Monocíclicos":
-    st.title("🔬 BioPath-Sentinel: Análisis de Péptidos Monocíclicos")
+    st.title("BioPath-Sentinel: Análisis de Péptidos Monocíclicos")
     st.subheader("Modelado 3D y Predicción de Permeabilidad de Membrana (Resultados Colab)")
 
     st.markdown("""
-    Este módulo integra el flujo de trabajo desarrollado en **Google Colab**, abarcando desde la curación de 
+    Este trabajo abarca desde la curación de 
     SMILES y la generación de conformómeros 3D vía RDKit, hasta la implementación de modelos de **Machine Learning** (Random Forest) para predecir la permeabilidad. El objetivo es identificar candidatos con alto potencial terapéutico 
     capaces de atravesar la barrera celular.
     """)
 
     # --- SECCIÓN 1: GENERACIÓN DE ESTRUCTURAS 3D (RDKit) ---
     st.divider()
-    st.subheader("1. 🏗️ Modelado Estructural y Geometría Molecular")
+    st.subheader("1. Modelado Estructural y Geometría Molecular")
     
     col_visual, col_desc = st.columns([1.6, 1])
 
     with col_visual:
         try:
-            # Aquí idealmente cargarías una imagen real de py3Dmol generada en tu Colab.
-            # Puedes capturar una pantalla del Colab y guardarla como 'conformeros_3d.png'.
+            # Aquí imagen real de py3Dmol generada.
+            # 'conformeros_3d.png'.
             st.image("conformeros_3d.png", 
                      caption="Visualización de conformómeros de baja energía generados con ETKDGv3 (RDKit).", 
                      use_container_width=True)
         except:
-            st.warning("⚠️ Captura de pantalla 'conformeros_3d.png' no encontrada. Muestra una estructura representativa de tu Colab.")
+            st.warning(" Captura de pantalla 'conformeros_3d.png' no encontrada. Muestra una estructura representativa.")
     
     with col_desc:
-        st.info("**Hito Técnico (Colab):** Generación exitosa de conformómeros para 996 péptidos.")
+        st.info("**Hito Técnico):** Generación exitosa de conformómeros para 996 péptidos.")
         st.write("""
         **Descriptores Calculados:**
         - **MW / LogP / TPSA:** Parámetros de la Regla de Lipinski/Veber.
@@ -450,7 +450,7 @@ elif opcion == "Péptidos Monocíclicos":
 
     # --- SECCIÓN 2: DATASET MAESTRO (Muestra Top & Bottom) ---
     st.divider()
-    st.subheader("2. 📋 Muestra del Dataset de Entrenamiento (n=996)")
+    st.subheader("2. Muestra del Dataset de Entrenamiento (n=996)")
     st.write("Datos procesados y normalizados, listos para el modelado predictivo.")
     
     try:
@@ -478,7 +478,7 @@ elif opcion == "Péptidos Monocíclicos":
 
     # --- SECCIÓN 3: RENDIMIENTO DEL MODELO Y FEATURE IMPORTANCE ---
     st.divider()
-    st.subheader("3. 🤖 Machine Learning y Análisis de Importancia")
+    st.subheader("3.  Machine Learning y Análisis de Importancia")
 
     col_metricas, col_grafico = st.columns([1, 1.6])
 
@@ -499,13 +499,13 @@ criterion='squared_error'
 
     with col_grafico:
         try:
-            # Aquí debes cargar la gráfica de Feature Importance que generaste en tu Colab.
-            # Puedes guardar el gráfico como 'feature_importance.png'.
+            # cargar la gráfica de Feature Importance que generaste.
+            # el gráfico como 'feature_importance.png'.
             st.image("feature_importance.png", 
                      caption="Gráfico de Importancia de Características (Feature Importance) del modelo Random Forest.", 
                      use_container_width=True)
         except:
-            st.warning("⚠️ Gráfico 'feature_importance.png' no encontrado. Captura y guarda el gráfico generado en tu Colab.")
+            st.warning(" Gráfico 'feature_importance.png' no encontrado. grafico")
 
     # --- CONCLUSIÓN Y PRÓXIMOS PASOS ---
     st.divider()
