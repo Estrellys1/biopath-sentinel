@@ -1,4 +1,4 @@
-import streamlit as st
+noimport streamlit as st
 import matplotlib.pyplot as plt
 from Bio import Phylo
 import io
@@ -26,7 +26,7 @@ opcion = st.sidebar.radio(
         "Seguridad Hídrica (Norovirus)", 
         "Dinámica Molecular de Péptidos (Amiloides)", # <-- Tu sección favorita
         "Simulación Molecular", # <-- Mantenemos la original
-        "peptidos monociclicos"
+        "Péptidos Monocíclicos"
     ]
 )
 
