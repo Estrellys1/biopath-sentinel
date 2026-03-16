@@ -512,7 +512,7 @@ criterion='squared_error'
     st.success("""
     **Veredicto BioPath-Sentinel:** El análisis de Feature Importance revela que la **TPSA (Topological Polar Surface Area)** y la **Asfericidad** son los descriptores que más influyen en la predicción de permeabilidad para este dataset de péptidos monocíclicos. Este hallazgo valida la hipótesis de que la compactación molecular y la exposición de superficie polar son determinantes clave para atravesar membranas biológicas.
     """)
-    st.info("Paso sugerido: Validar los 5 candidatos 'AstraZeneca Ready' mediante simulaciones de Dinámica Molecular (MD) para evaluar su estabilidad conformacional.")
+    st.info("Paso sugerido: Validar los 5 candidatos 'Ready' mediante simulaciones de Dinámica Molecular (MD) para evaluar su estabilidad conformacional.")
 
 # --- SECCIÓN INFERIOR GENERAL (VISIBLE EN TODAS LAS PÁGINAS) ---
 st.divider()
