@@ -416,7 +416,7 @@ elif opcion == "Simulación Molecular":
 
 # --- PÁGINA: PÉPTIDOS MONOCÍCLICOS ---
 elif opcion == "Péptidos Monocíclicos":
-    st.title("🔬 BioPath-Sentinel: Análisis de Péptidos Monocíclicos")
+    st.title(" BioPath-Sentinel: Análisis de Péptidos Monocíclicos")
     st.subheader("Modelado 3D y Predicción de Permeabilidad con IA")
 
     st.markdown("""
@@ -433,7 +433,7 @@ elif opcion == "Péptidos Monocíclicos":
 
     # --- CARGA DE DATOS Y TABLA ---
     st.divider()
-    st.subheader("📋 Muestra del Dataset Maestro (Startup Verdict)")
+    st.subheader("Muestra del Dataset Maestro (Startup Verdict)")
     
     try:
         # Usamos el reporte final que adjuntaste
@@ -483,10 +483,10 @@ elif opcion == "Péptidos Monocíclicos":
         try:
             st.image("feature_importance.png", caption="Importancia de Características (Feature Importance)", use_container_width=True)
         except:
-            st.info("💡 Consejo: Agrega el gráfico de importancia generado en tu Colab.")
+            st.info("el gráfico.")
 
     with col_txt:
-        st.markdown("### 🧬 BioPath Insights")
+        st.markdown("### BioPath Insights")
         st.success("**Descubrimiento Clave:**")
         st.write("""
         Los péptidos con veredicto de **Éxito** presentan una combinación única de baja **Asfericidad** (alta compactación) y una **TPSA_3D** optimizada. 
@@ -499,10 +499,10 @@ elif opcion == "Péptidos Monocíclicos":
     
     # Verificamos si la variable existe antes de usarla
     if 'df_final' in locals():
-        st.subheader("📥 Exportar Resultados")
+        st.subheader(" Exportar Resultados")
         csv_data = df_final.to_csv(index=False).encode('utf-8')
         st.download_button(
-            label="Descargar Reporte BioPath para AstraZeneca",
+            label="Descargar Reporte BioPath",
             data=csv_data,
             file_name='BioPath_Final_Report.csv',
             mime='text/csv',
@@ -510,7 +510,7 @@ elif opcion == "Péptidos Monocíclicos":
         st.success("Análisis completado. Los datos están listos para exportación.")
     else:
         st.error("No se pudo generar el reporte porque el archivo de datos no fue encontrado.")
-        st.info("Asegúrate de que 'BioPath_Final_Predictions_Report.csv' esté en la carpeta raíz de tu GitHub.")
+        st.info("es 'BioPath_Final_Predictions_Report.csv'.")
 
 
 # --- SECCIÓN INFERIOR GENERAL
