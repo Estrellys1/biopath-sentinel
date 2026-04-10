@@ -39,15 +39,15 @@ if opcion == "Inicio":
     st.title(" BioPath-Sentinel AI")
     st.subheader("Inteligencia Artificial para la Seguridad Biológica Global")
 
-
-st.markdown("""
-BioPath-Sentinel AI es una plataforma de vigilancia genómica nativa en la nube.  
-Aprovechamos el **aprendizaje profundo (Deep Learning)** y la **dinámica molecular** para proteger infraestructuras críticas.  
-Nuestro pipeline integra **AlphaFold2** para el modelado estructural y **GROMACS** para la simulación molecular.  
-Estamos solicitando créditos de **Google Cloud** para migrar nuestras cargas de trabajo computacionalmente intensivas—específicamente el reconocimiento de patrones acelerado por GPU en genómica del cáncer de mama y la predicción de mutaciones virales—a **Google Kubernetes Engine (GKE)** utilizando nodos **NVIDIA A100**.
-""")    
+    # TODO ESTO DEBE TENER LA MISMA SANGRÍA/ESPACIO:
+    st.markdown("""
+    BioPath-Sentinel AI es una plataforma de vigilancia genómica nativa en la nube.  
+    Aprovechamos el **aprendizaje profundo (Deep Learning)** y la **dinámica molecular** para proteger infraestructuras críticas.  
+    Nuestro pipeline integra **AlphaFold2** para el modelado estructural y **GROMACS** para la simulación molecular.  
+    Estamos solicitando créditos de **Google Cloud** para migrar nuestras cargas de trabajo computacionalmente intensivas...
+    """)    
    
-st.info("Utilizamos modelado avanzado y bioinformática para reducir ciclos de detección de 48h a 6h.")
+    st.info("Utilizamos modelado avanzado y bioinformática para reducir ciclos de detección de 48h a 6h.")
 
 # --- PÁGINA: ONCOLOGÍA GENÓMICA ---
 elif opcion == "Oncología Genómica":
