@@ -1,4 +1,4 @@
-import streamlit as st
+hiimport streamlit as st
 import pandas as pd
 import plotly.express as px
 from rdkit import Chem
@@ -39,16 +39,16 @@ if opcion == "Inicio":
     st.title(" BioPath-Sentinel AI")
     st.subheader("Inteligencia Artificial para la Seguridad Biológica Global")
     
-    st.markdown("""
-    **Project Description:** "BioPath-Sentinel AI is a cloud-native genomic surveillance platform. 
-    We leverage **Deep Learning** and **Molecular Dynamics** to protect critical infrastructure. 
-    Our pipeline integrates **AlphaFold2** for structural modeling and **GROMACS** for molecular simulation. 
-    We are applying for Google Cloud credits to migrate our computationally intensive workloads—specifically 
-    GPU-accelerated pattern recognition in breast cancer genomics and viral mutation prediction—to 
-    **Google Kubernetes Engine (GKE)** using **NVIDIA A100** nodes."
-    """)
-    
-    st.info("Utilizamos modelado avanzado y bioinformática para reducir ciclos de detección de 48h a 6h.")
+    import streamlit as st
+
+st.markdown("""
+BioPath-Sentinel AI es una plataforma de vigilancia genómica nativa en la nube.  
+Aprovechamos el **aprendizaje profundo (Deep Learning)** y la **dinámica molecular** para proteger infraestructuras críticas.  
+Nuestro pipeline integra **AlphaFold2** para el modelado estructural y **GROMACS** para la simulación molecular.  
+Estamos solicitando créditos de **Google Cloud** para migrar nuestras cargas de trabajo computacionalmente intensivas—específicamente el reconocimiento de patrones acelerado por GPU en genómica del cáncer de mama y la predicción de mutaciones virales—a **Google Kubernetes Engine (GKE)** utilizando nodos **NVIDIA A100**.
+""")    
+   
+st.info("Utilizamos modelado avanzado y bioinformática para reducir ciclos de detección de 48h a 6h.")
 
 # --- PÁGINA: ONCOLOGÍA GENÓMICA ---
 elif opcion == "Oncología Genómica":
