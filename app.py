@@ -38,8 +38,7 @@ opcion = st.sidebar.radio(
 if opcion == "Inicio":
     st.title(" BioPath-Sentinel AI")
     st.subheader("Inteligencia Artificial para la Seguridad Biológica Global")
-    
-    import streamlit as st
+
 
 st.markdown("""
 BioPath-Sentinel AI es una plataforma de vigilancia genómica nativa en la nube.  
