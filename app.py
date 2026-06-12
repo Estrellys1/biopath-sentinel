@@ -43,8 +43,8 @@ if opcion == "Inicio":
     st.markdown("""
     BioPath-Sentinel AI es una plataforma de vigilancia genómica nativa en la nube.  
     Aprovechamos el **aprendizaje profundo (Deep Learning)** y la **dinámica molecular** para proteger infraestructuras críticas.  
-    Nuestro pipeline integra **AlphaFold2** para el modelado estructural y **GROMACS** para la simulación molecular.  
-    Estamos solicitando créditos de **Google Cloud** para migrar nuestras cargas de trabajo computacionalmente intensivas, específicamente el reconocimiento de patrones acelerado por GPU en genómica del cáncer de mama y la predicción de mutaciones virales—a **Google Kubernetes Engine (GKE)** utilizando nodos **NVIDIA A100**.
+    Nuestro pipeline integra modelado molecular y simulación molecula.  
+    usamos GPU en genómica del cáncer de mama y la predicción de mutaciones virales.
     """)    
    
     st.info("Utilizamos modelado avanzado y bioinformática para reducir ciclos de detección de 48h a 6h.")
@@ -337,7 +337,7 @@ elif opcion == "Dinámica Molecular de Péptidos (Amiloides)":
         st.header("1. Configuración del Sistema")
         st.write("""
         - **Molécula:** L-Difenilalanina (L-FF) en estado zwitteriónico.
-        - **Software:** GROMACS 2020.4.
+        - **Sotfware:** GROMACS.
         - **Campo de Fuerza:** OPLS-AA (Optimized Potentials for Liquid Simulations).
         - **Solventes:** Mezclas binarias de Agua (TIP3P) y 2-Propanol en diversas fracciones molares.
         """)
@@ -394,8 +394,8 @@ elif opcion == "Simulación Molecular":
     st.title(" Dinámica Molecular y Bioinformática")
     
     st.markdown("""
-    "Nuestra metodología emplea **CHARMM-GUI** para la construcción de sistemas solvatados complejos. 
-    Los outputs generados son optimizados para **GROMACS**, aprovechando los kernels de aceleración **CUDA** en las GPUs de Google Cloud."
+    "Nuestra metodología emplea herramientas bioinformaticas para la construcción de sistemas solvatados complejos. 
+    Los outputs generados son optimizados para un software de simulación molecular, aprovechando los kernels de aceleración **CUDA** en las GPUs de Google Cloud."
     """)
 
     st.divider()
@@ -404,14 +404,14 @@ elif opcion == "Simulación Molecular":
     with c1:
         st.subheader(" Diana Terapéutica (Salud)")
         st.write("Fuerza iónica: **0.15 M NaCl** (Fisiológico).")
-        st.caption("Temp: 310.15 K | Force Field: CHARMM36m")
+        st.caption("Temp: 310.15 K | Force Field)
         
     with c2:
         st.subheader(" Desalinización (Industrial)")
         st.write("Alta salinidad: **0.60 M NaCl** (Agua de mar).")
         st.caption("Temp: 298.15 K | Salinidad: 35 ppt")
 
-    st.success("Scripts optimizados para GROMACS 2024+.")
+    st.success("Scripts optimizados para un bioinformatica")
 
 # --- PÁGINA: PÉPTIDOS MONOCÍCLICOS ---
 elif opcion == "Péptidos Monocíclicos":
@@ -548,10 +548,10 @@ with cc:
 st.divider()
 st.header(" Stack Tecnológico")
 st.code("""
-- Structural Prediction: AlphaFold2 & Rosetta
-- Molecular Dynamics: GROMACS (CUDA Optimized)
-- System Setup: CHARMM-GUI / CHARMM36m
-- Infrastructure: Google Cloud (GKE & NVIDIA A100)
+- Modelado molecular
+- Simulación molecular
+- System Setup
+- Infrastructure GPu
 """, language="text")
 
 # --- MÉTRICAS ---
@@ -574,8 +574,7 @@ with col_metrics2:
 # --- CONTACTO EN SIDEBAR ---
 st.sidebar.divider()
 st.sidebar.title(" Contacto Corporativo")
-st.sidebar.write("**Email:** estrellascliente@gmail.com")
-st.sidebar.info("Google Cloud for Startups Program")
+st.sidebar.write("**Email:** biopathsentinel@gmail.com")
 
 with st.sidebar.expander(" Ver Proyecto: Cáncer de Mama"):
     st.write(leer_archivo_cancer())
