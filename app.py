@@ -404,7 +404,7 @@ elif opcion == "Simulación Molecular":
     with c1:
         st.subheader(" Diana Terapéutica (Salud)")
         st.write("Fuerza iónica: **0.15 M NaCl** (Fisiológico).")
-        st.caption("Temp: 310.15 K | Force Field)
+        st.caption("Temp: 310.15 K | Force Field")
         
     with c2:
         st.subheader(" Desalinización (Industrial)")
